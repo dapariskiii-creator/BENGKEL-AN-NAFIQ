@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Penjualan - AN-NAFIQ BENGKEL</title>
+
+    <link rel="stylesheet" href="penjualan.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">🔧</div>
+
+            <div>
+                <h2>AN-NAFIQ</h2>
+                <span>BENGKEL</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+
+            <a href="dashboard.html" class="menu-item">
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="kasir.html" class="menu-item">
+                <span>🛒</span>
+                <span>Kasir</span>
+            </a>
+
+            <a href="servis.html" class="menu-item">
+                <span>🔧</span>
+                <span>Servis</span>
+            </a>
+
+            <!-- PRODUK & STOK -->
+            <button
+                type="button"
+                class="menu-item submenu-button"
+                id="produkMenuButton"
+            >
+                <span>📦</span>
+                <span>Produk & Stok</span>
+                <span class="arrow" id="produkArrow">▼</span>
+            </button>
+
+            <div class="submenu" id="produkSubmenu">
+
+                <a href="stok.html" class="submenu-item">
+                    <span>📦</span>
+                    <span>Data Produk</span>
+                </a>
+
+                <a href="stok-masuk.html" class="submenu-item">
+                    <span>📥</span>
+                    <span>Stok Masuk</span>
+                </a>
+
+                <a href="stok-keluar.html" class="submenu-item">
+                    <span>📤</span>
+                    <span>Stok Keluar</span>
+                </a>
+
+                <a href="kartu-stok.html" class="submenu-item">
+                    <span>📋</span>
+                    <span>Kartu Stok</span>
+                </a>
+
+            </div>
+
+
+            <!-- PEMBELIAN -->
+            <button
+                type="button"
+                class="menu-item submenu-button"
+                id="pembelianMenuButton"
+            >
+                <span>🚚</span>
+                <span>Pembelian</span>
+                <span class="arrow" id="pembelianArrow">▼</span>
+            </button>
+
+            <div class="submenu" id="pembelianSubmenu">
+
+                <a href="pembelian.html" class="submenu-item">
+                    <span>🛒</span>
+                    <span>Pembelian Baru</span>
+                </a>
+
+                <a href="supplier.html" class="submenu-item">
+                    <span>🏭</span>
+                    <span>Supplier</span>
+                </a>
+
+                <a href="pembelian.html#riwayat" class="submenu-item">
+                    <span>📋</span>
+                    <span>Riwayat Pembelian</span>
+                </a>
+
+            </div>
+
+
+            <!-- MENU UTAMA -->
+            <a href="penjualan.html" class="menu-item active">
+                <span>💰</span>
+                <span>Penjualan</span>
+            </a>
+
+            <a href="pelanggan.html" class="menu-item">
+                <span>👥</span>
+                <span>Pelanggan</span>
+            </a>
+
+            <a href="piutang.html" class="menu-item">
+                <span>📋</span>
+                <span>Piutang</span>
+            </a>
+
+            <a href="hutang.html" class="menu-item">
+                <span>💳</span>
+                <span>Hutang</span>
+            </a>
+
+            <a href="keuangan.html" class="menu-item">
+                <span>💵</span>
+                <span>Kas & Keuangan</span>
+            </a>
+
+            <a href="pembagian-uang.html" class="menu-item">
+                <span>🪙</span>
+                <span>Pembagian Uang</span>
+            </a>
+
+            <a href="mekanik.html" class="menu-item">
+                <span>👨‍🔧</span>
+                <span>Mekanik</span>
+            </a>
+
+            <a href="laporan.html" class="menu-item">
+                <span>📈</span>
+                <span>Laporan</span>
+            </a>
+
+            <a href="pengaturan.html" class="menu-item">
+                <span>⚙️</span>
+                <span>Pengaturan</span>
+            </a>
+
+        </nav>
+
+
+        <button id="logoutButton" class="logout-button">
+            🚪 Keluar
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <h1>Penjualan</h1>
+                <p>Buat transaksi penjualan bengkel</p>
+            </div>
+
+            <div class="user-box">
+
+                <div class="user-icon">
+                    👤
+                </div>
+
+                <div>
+                    <strong id="userName">Memuat...</strong>
+                    <small id="userRole">...</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <div class="page-header">
+
+                <div>
+                    <h2>Transaksi Penjualan</h2>
+                    <p>
+                        Pilih produk yang ingin dijual dan selesaikan pembayaran.
+                    </p>
+                </div>
+
+                <div class="date-box">
+                    <span>Tanggal</span>
+                    <strong id="todayDate">-</strong>
+                </div>
+
+            </div>
+
+
+            <div class="sales-layout">
+
+                <!-- PRODUK -->
+                <section class="products-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>Daftar Produk</h3>
+
+                            <p>
+                                Pilih produk untuk dimasukkan ke keranjang.
+                            </p>
+                        </div>
+
+                        <strong id="productCount">
+                            0 produk
+                        </strong>
+
+                    </div>
+
+
+                    <!-- SEARCH -->
+                    <div class="search-box">
+
+                        <span>🔍</span>
+
+                        <input
+                            type="text"
+                            id="searchProduct"
+                            placeholder="Cari nama, kode, atau barcode..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <!-- CATEGORY -->
+                    <div class="categories">
+
+                        <button
+                            type="button"
+                            class="category-button active"
+                            data-category="semua"
+                        >
+                            Semua
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="sparepart"
+                        >
+                            Sparepart
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="oli"
+                        >
+                            Oli
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="aksesoris"
+                        >
+                            Aksesoris
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="lainnya"
+                        >
+                            Lainnya
+                        </button>
+
+                    </div>
+
+
+                    <!-- PRODUCT LIST -->
+                    <div id="productList" class="product-list">
+
+                        <div class="loading">
+                            ⏳
+                            <p>Memuat produk...</p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- CART -->
+                <aside class="cart-panel">
+
+                    <div class="cart-header">
+
+                        <div>
+                            <h3>🛒 Keranjang</h3>
+
+                            <span id="cartCount">
+                                0 item
+                            </span>
+                        </div>
+
+                        <button
+                            type="button"
+                            id="clearCart"
+                            class="clear-button"
+                        >
+                            Kosongkan
+                        </button>
+
+                    </div>
+
+
+                    <div id="cartItems" class="cart-items">
+
+                        <div class="empty-cart">
+
+                            <div>🛒</div>
+
+                            <h3>Keranjang masih kosong</h3>
+
+                            <p>
+                                Pilih produk untuk memulai transaksi.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SUMMARY -->
+                    <div class="cart-summary">
+
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <strong id="subtotal">
+                                Rp 0
+                            </strong>
+                        </div>
+
+
+                        <div class="discount-row">
+
+                            <label for="discount">
+                                Diskon
+                            </label>
+
+                            <div class="money-input">
+
+                                <span>Rp</span>
+
+                                <input
+                                    type="number"
+                                    id="discount"
+                                    value="0"
+                                    min="0"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="total-row">
+
+                            <span>Total</span>
+
+                            <strong id="total">
+                                Rp 0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYMENT -->
+                    <div class="payment-section">
+
+                        <h3>Pembayaran</h3>
+
+
+                        <label>
+                            Metode Pembayaran
+                        </label>
+
+                        <div class="payment-methods">
+
+                            <button
+                                type="button"
+                                class="payment-button active"
+                                data-payment="CASH"
+                            >
+                                💵
+                                <span>Cash</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="payment-button"
+                                data-payment="QRIS"
+                            >
+                                📱
+                                <span>QRIS</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="payment-button"
+                                data-payment="TRANSFER"
+                            >
+                                🏦
+                                <span>Transfer</span>
+                            </button>
+
+                        </div>
+
+
+                        <label for="paidAmount">
+                            Uang Dibayar
+                        </label>
+
+                        <div class="money-input">
+
+                            <span>Rp</span>
+
+                            <input
+                                type="number"
+                                id="paidAmount"
+                                value="0"
+                                min="0"
+                            >
+
+                        </div>
+
+
+                        <div class="change-box">
+
+                            <span>Kembalian</span>
+
+                            <strong id="change">
+                                Rp 0
+                            </strong>
+
+                        </div>
+
+
+                        <label for="saleNotes">
+                            Catatan
+                        </label>
+
+                        <textarea
+                            id="saleNotes"
+                            rows="3"
+                            placeholder="Catatan transaksi..."
+                        ></textarea>
+
+
+                        <button
+                            type="button"
+                            id="saveSale"
+                            class="save-button"
+                        >
+                            💰 SIMPAN TRANSAKSI
+                        </button>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+
+            <!-- INFO -->
+            <div class="info-box">
+
+                <div>
+                    💡
+                </div>
+
+                <div>
+
+                    <strong>Informasi</strong>
+
+                    <p>
+                        Setelah transaksi disimpan, stok produk akan
+                        otomatis berkurang dan transaksi masuk ke
+                        laporan penjualan.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="penjualan.js"></script>
+
+</body>
+</html>

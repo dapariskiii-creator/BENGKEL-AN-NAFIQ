@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Piutang - AN-NAFIQ BENGKEL</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="piutang.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <div class="logo-icon">🔧</div>
+
+            <div>
+                <h2>AN-NAFIQ</h2>
+                <span>BENGKEL</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html" class="menu-item">
+                📊 <span>Dashboard</span>
+            </a>
+
+            <a href="kasir.html" class="menu-item">
+                🛒 <span>Kasir</span>
+            </a>
+
+            <a href="servis.html" class="menu-item">
+                🔧 <span>Servis</span>
+            </a>
+
+            <div class="menu-group">
+                <button type="button" class="menu-item menu-button"
+                    onclick="toggleSubmenu('produkSubmenu', 'produkArrow')">
+                    📦 <span>Produk & Stok</span>
+                    <span id="produkArrow">▼</span>
+                </button>
+
+                <div id="produkSubmenu" class="submenu">
+                    <a href="stok.html">Data Produk</a>
+                    <a href="stok-masuk.html">Stok Masuk</a>
+                    <a href="stok-keluar.html">Stok Keluar</a>
+                    <a href="kartu-stok.html">Kartu Stok</a>
+                </div>
+            </div>
+
+            <div class="menu-group">
+                <button type="button" class="menu-item menu-button"
+                    onclick="toggleSubmenu('pembelianSubmenu', 'pembelianArrow')">
+                    🛍️ <span>Pembelian</span>
+                    <span id="pembelianArrow">▼</span>
+                </button>
+
+                <div id="pembelianSubmenu" class="submenu">
+                    <a href="pembelian.html">Pembelian Baru</a>
+                    <a href="supplier.html">Supplier</a>
+                    <a href="pembelian.html#riwayat">Riwayat Pembelian</a>
+                </div>
+            </div>
+
+            <a href="penjualan.html" class="menu-item">
+                💰 <span>Penjualan</span>
+            </a>
+
+            <a href="pelanggan.html" class="menu-item">
+                👥 <span>Pelanggan</span>
+            </a>
+
+            <a href="piutang.html" class="menu-item active">
+                💳 <span>Piutang</span>
+            </a>
+
+            <a href="hutang.html" class="menu-item">
+                💸 <span>Hutang</span>
+            </a>
+
+            <a href="keuangan.html" class="menu-item">
+                💵 <span>Kas & Keuangan</span>
+            </a>
+
+            <a href="pembagian-uang.html" class="menu-item">
+                💰 <span>Pembagian Uang</span>
+            </a>
+
+            <a href="mekanik.html" class="menu-item">
+                👨‍🔧 <span>Mekanik</span>
+            </a>
+
+            <a href="laporan.html" class="menu-item">
+                📈 <span>Laporan</span>
+            </a>
+
+            <a href="pengaturan.html" class="menu-item">
+                ⚙️ <span>Pengaturan</span>
+            </a>
+
+        </nav>
+
+        <button id="logoutButton" class="logout-button">
+            🚪 Keluar
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <h1>Piutang</h1>
+                <p>Kelola piutang pelanggan AN-NAFIQ BENGKEL</p>
+            </div>
+
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+
+                <div>
+                    <strong id="userName">bengkel an-nafiq</strong>
+                    <span id="userRole">OWNER</span>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <!-- STATISTICS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon">💳</div>
+
+                    <div class="stat-info">
+                        <span>Total Piutang</span>
+                        <strong id="totalPiutang">Rp 0</strong>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon">🕐</div>
+
+                    <div class="stat-info">
+                        <span>Belum Jatuh Tempo</span>
+                        <strong id="belumJatuhTempo">Rp 0</strong>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon">⚠️</div>
+
+                    <div class="stat-info">
+                        <span>Jatuh Tempo</span>
+                        <strong id="jatuhTempo">Rp 0</strong>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+
+                    <div class="stat-info">
+                        <span>Sudah Lunas</span>
+                        <strong id="sudahLunas">Rp 0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- PIUTANG CARD -->
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Daftar Piutang</h2>
+                        <p>Daftar transaksi piutang pelanggan</p>
+                    </div>
+
+                </div>
+
+
+                <!-- FILTER -->
+                <div class="filter-area">
+
+                    <div class="search-box">
+
+                        <span>🔍</span>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Cari pelanggan atau nomor transaksi..."
+                        >
+
+                    </div>
+
+
+                    <select id="statusFilter">
+
+                        <option value="semua">
+                            Semua Status
+                        </option>
+
+                        <option value="belum">
+                            Belum Jatuh Tempo
+                        </option>
+
+                        <option value="jatuh_tempo">
+                            Jatuh Tempo
+                        </option>
+
+                        <option value="sebagian">
+                            Dibayar Sebagian
+                        </option>
+
+                        <option value="lunas">
+                            Lunas
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>No</th>
+                                <th>Pelanggan</th>
+                                <th>No. Transaksi</th>
+                                <th>Tanggal</th>
+                                <th>Jatuh Tempo</th>
+                                <th>Total</th>
+                                <th>Terbayar</th>
+                                <th>Sisa</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="piutangTableBody">
+
+                            <tr>
+                                <td colspan="10" class="loading">
+                                    Memuat data piutang...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL DETAIL -->
+<div id="detailModal" class="modal">
+
+    <div class="modal-content large-modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Detail Piutang</h2>
+                <p>Informasi transaksi piutang pelanggan</p>
+            </div>
+
+            <button type="button" id="closeDetailModal">
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="detailContent">
+
+            <!-- Detail diisi oleh piutang.js -->
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                type="button"
+                class="btn-secondary"
+                id="closeDetailButton">
+                Tutup
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MODAL PEMBAYARAN -->
+<div id="paymentModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Bayar Piutang</h2>
+                <p>Masukkan pembayaran pelanggan</p>
+            </div>
+
+            <button type="button" id="closePaymentModal">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="paymentForm">
+
+            <input
+                type="hidden"
+                id="paymentReceivableId"
+            >
+
+
+            <div class="form-group">
+
+                <label>
+                    Pelanggan
+                </label>
+
+                <input
+                    type="text"
+                    id="paymentCustomerName"
+                    readonly
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Sisa Piutang
+                </label>
+
+                <input
+                    type="text"
+                    id="paymentRemaining"
+                    readonly
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="paymentAmount">
+                    Jumlah Pembayaran
+                </label>
+
+                <input
+                    type="number"
+                    id="paymentAmount"
+                    min="1"
+                    step="1"
+                    placeholder="Masukkan jumlah pembayaran"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="paymentMethod">
+                    Metode Pembayaran
+                </label>
+
+                <select id="paymentMethod" required>
+
+                    <option value="">
+                        Pilih metode pembayaran
+                    </option>
+
+                    <option value="cash">
+                        Cash
+                    </option>
+
+                    <option value="transfer">
+                        Transfer
+                    </option>
+
+                    <option value="qris">
+                        QRIS
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="paymentNotes">
+                    Catatan
+                </label>
+
+                <textarea
+                    id="paymentNotes"
+                    rows="3"
+                    placeholder="Catatan pembayaran (opsional)"
+                ></textarea>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="cancelPayment">
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-primary">
+                    💰 Simpan Pembayaran
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="piutang.js"></script>
+
+</body>
+</html>
+

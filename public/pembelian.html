@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pembelian - AN-NAFIQ BENGKEL</title>
+
+    <link rel="stylesheet" href="pembelian.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🔧
+            </div>
+
+            <div>
+                <h2>AN-NAFIQ</h2>
+                <span>BENGKEL</span>
+            </div>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <!-- DASHBOARD -->
+
+            <a href="/dashboard.html" class="menu-item">
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <!-- KASIR -->
+
+            <a href="/kasir.html" class="menu-item">
+                <span>💰</span>
+                <span>Kasir</span>
+            </a>
+
+
+            <!-- SERVIS -->
+
+            <a href="/servis.html" class="menu-item">
+                <span>🔧</span>
+                <span>Servis</span>
+            </a>
+
+
+            <!-- =================================================
+                 PRODUK & STOK
+            ================================================== -->
+
+            <div
+                class="menu-item has-submenu"
+                id="menuProdukStok"
+                onclick="toggleSubmenu(
+                    'produkStokSubmenu',
+                    'produkStokArrow'
+                )"
+            >
+
+                <span>📦</span>
+
+                <span>
+                    Produk & Stok
+                </span>
+
+                <span
+                    class="submenu-arrow"
+                    id="produkStokArrow"
+                >
+                    ▾
+                </span>
+
+            </div>
+
+
+            <div
+                class="submenu"
+                id="produkStokSubmenu"
+            >
+
+                <a
+                    href="/stok.html"
+                    class="submenu-item"
+                >
+                    <span>📦</span>
+                    <span>Data Produk</span>
+                </a>
+
+
+                <a
+                    href="/stok-masuk.html"
+                    class="submenu-item"
+                >
+                    <span>📥</span>
+                    <span>Stok Masuk</span>
+                </a>
+
+
+                <a
+                    href="/stok-keluar.html"
+                    class="submenu-item"
+                >
+                    <span>📤</span>
+                    <span>Stok Keluar</span>
+                </a>
+
+
+                <a
+                    href="/kartu-stok.html"
+                    class="submenu-item"
+                >
+                    <span>📋</span>
+                    <span>Kartu Stok</span>
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+                 PEMBELIAN
+            ================================================== -->
+
+            <div
+                class="menu-item has-submenu active"
+                id="menuPembelian"
+                onclick="toggleSubmenu(
+                    'pembelianSubmenu',
+                    'pembelianArrow'
+                )"
+            >
+
+                <span>🚚</span>
+
+                <span>
+                    Pembelian
+                </span>
+
+                <span
+                    class="submenu-arrow"
+                    id="pembelianArrow"
+                >
+                    ▾
+                </span>
+
+            </div>
+
+
+            <div
+                class="submenu"
+                id="pembelianSubmenu"
+            >
+
+                <a
+                    href="/pembelian.html"
+                    class="submenu-item active"
+                >
+                    <span>🛒</span>
+                    <span>Pembelian Baru</span>
+                </a>
+
+
+                <a
+                    href="/supplier.html"
+                    class="submenu-item"
+                >
+                    <span>🏭</span>
+                    <span>Supplier</span>
+                </a>
+
+
+                <a
+                    href="/pembelian.html#riwayat"
+                    class="submenu-item"
+                >
+                    <span>📋</span>
+                    <span>Riwayat Pembelian</span>
+                </a>
+
+            </div>
+
+
+            <!-- PENJUALAN -->
+
+            <a href="/penjualan.html" class="menu-item">
+                <span>🧾</span>
+                <span>Penjualan</span>
+            </a>
+
+
+            <!-- PELANGGAN -->
+
+            <a href="/pelanggan.html" class="menu-item">
+                <span>👥</span>
+                <span>Pelanggan</span>
+            </a>
+
+
+            <!-- PIUTANG -->
+
+            <a href="/piutang.html" class="menu-item">
+                <span>💳</span>
+                <span>Piutang</span>
+            </a>
+
+
+            <!-- HUTANG -->
+
+            <a href="/hutang.html" class="menu-item">
+                <span>📑</span>
+                <span>Hutang</span>
+            </a>
+
+
+            <!-- KAS & KEUANGAN -->
+
+            <a href="/keuangan.html" class="menu-item">
+                <span>💵</span>
+                <span>Kas & Keuangan</span>
+            </a>
+
+
+            <!-- PEMBAGIAN UANG -->
+
+            <a href="/pembagian-uang.html" class="menu-item">
+                <span>💰</span>
+                <span>Pembagian Uang</span>
+            </a>
+
+
+            <!-- MEKANIK -->
+
+            <a href="/mekanik.html" class="menu-item">
+                <span>👨‍🔧</span>
+                <span>Mekanik</span>
+            </a>
+
+
+            <!-- LAPORAN -->
+
+            <a href="/laporan.html" class="menu-item">
+                <span>📈</span>
+                <span>Laporan</span>
+            </a>
+
+
+            <!-- PENGATURAN -->
+
+            <a href="/pengaturan.html" class="menu-item">
+                <span>⚙️</span>
+                <span>Pengaturan</span>
+            </a>
+
+        </nav>
+
+
+        <!-- LOGOUT -->
+
+        <button
+            type="button"
+            class="logout-button"
+            onclick="logout()"
+        >
+            🚪 Keluar
+        </button>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Pembelian
+                </h1>
+
+                <p>
+                    Kelola pembelian barang dan stok bengkel
+                </p>
+
+            </div>
+
+
+            <div class="user-box">
+
+                <div class="user-icon">
+                    👤
+                </div>
+
+                <div>
+
+                    <strong id="userName">
+                        Memuat...
+                    </strong>
+
+                    <small id="userRole">
+                        -
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+
+        <section class="content">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>
+                        Pembelian Baru
+                    </h2>
+
+                    <p>
+                        Catat pembelian barang dari supplier.
+                        Stok akan otomatis bertambah setelah pembelian disimpan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FORM PEMBELIAN
+            ================================================== -->
+
+            <div class="table-panel">
+
+
+                <div class="table-header">
+
+                    <h3>
+                        Form Pembelian
+                    </h3>
+
+                    <p>
+                        Isi data pembelian dengan lengkap.
+                    </p>
+
+                </div>
+
+
+
+                <form
+                    id="purchaseForm"
+                    autocomplete="off"
+                >
+
+
+                    <!-- =========================================
+                         DATA PEMBELIAN
+                    ========================================== -->
+
+                    <div class="form-section">
+
+                        <h3>
+                            Data Pembelian
+                        </h3>
+
+                        <p>
+                            Informasi utama transaksi pembelian.
+                        </p>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- NOMOR PEMBELIAN -->
+
+                            <div class="form-group">
+
+                                <label for="purchaseNumber">
+                                    Nomor Pembelian
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="purchaseNumber"
+                                    readonly
+                                >
+
+                            </div>
+
+
+                            <!-- TANGGAL -->
+
+                            <div class="form-group">
+
+                                <label for="purchaseDate">
+                                    Tanggal Pembelian
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="purchaseDate"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- SUPPLIER -->
+
+                            <div class="form-group">
+
+                                <label for="supplier">
+                                    Supplier
+                                    <span>*</span>
+                                </label>
+
+                                <select
+                                    id="supplier"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Pilih supplier
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- NOMOR INVOICE -->
+
+                            <div class="form-group">
+
+                                <label for="invoiceNumber">
+                                    Nomor Invoice
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="invoiceNumber"
+                                    placeholder="Nomor invoice supplier"
+                                >
+
+                            </div>
+
+
+                            <!-- METODE PEMBAYARAN -->
+
+                            <div class="form-group">
+
+                                <label for="paymentMethod">
+                                    Metode Pembayaran
+                                    <span>*</span>
+                                </label>
+
+                                <select
+                                    id="paymentMethod"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Pilih metode pembayaran
+                                    </option>
+
+                                    <option value="CASH">
+                                        Cash
+                                    </option>
+
+                                    <option value="TRANSFER">
+                                        Transfer Bank
+                                    </option>
+
+                                    <option value="QRIS">
+                                        QRIS
+                                    </option>
+
+                                    <option value="BANK">
+                                        Bank
+                                    </option>
+
+                                    <option value="E-WALLET">
+                                        E-Wallet
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- STATUS PEMBAYARAN -->
+
+                            <div class="form-group">
+
+                                <label for="paymentStatus">
+                                    Status Pembayaran
+                                    <span>*</span>
+                                </label>
+
+                                <select
+                                    id="paymentStatus"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Pilih status
+                                    </option>
+
+                                    <option value="PAID">
+                                        Lunas
+                                    </option>
+
+                                    <option value="PARTIAL">
+                                        Sebagian
+                                    </option>
+
+                                    <option value="CREDIT">
+                                        Hutang
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =========================================
+                         ITEM PEMBELIAN
+                    ========================================== -->
+
+                    <div class="form-section">
+
+
+                        <div class="section-title-row">
+
+                            <div>
+
+                                <h3>
+                                    Barang yang Dibeli
+                                </h3>
+
+                                <p>
+                                    Tambahkan produk yang masuk ke stok.
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                id="addPurchaseItemButton"
+                                class="btn btn-primary"
+                            >
+                                ➕ Tambah Produk
+                            </button>
+
+                        </div>
+
+
+
+                        <div class="table-wrapper">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            #
+                                        </th>
+
+                                        <th>
+                                            Produk
+                                        </th>
+
+                                        <th>
+                                            Stok Saat Ini
+                                        </th>
+
+                                        <th>
+                                            Jumlah
+                                        </th>
+
+                                        <th>
+                                            Harga Beli
+                                        </th>
+
+                                        <th>
+                                            Diskon
+                                        </th>
+
+                                        <th>
+                                            Subtotal
+                                        </th>
+
+                                        <th>
+                                            Aksi
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody
+                                    id="purchaseItemsBody"
+                                >
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =========================================
+                         TOTAL
+                    ========================================== -->
+
+                    <div class="form-section">
+
+                        <h3>
+                            Ringkasan Pembelian
+                        </h3>
+
+                        <p>
+                            Periksa total transaksi sebelum disimpan.
+                        </p>
+
+
+                        <div class="total-box">
+
+
+                            <!-- SUBTOTAL -->
+
+                            <div class="total-row">
+
+                                <span>
+                                    Subtotal
+                                </span>
+
+                                <input
+                                    type="text"
+                                    id="purchaseSubtotal"
+                                    value="Rp 0"
+                                    readonly
+                                >
+
+                            </div>
+
+
+                            <!-- DISKON -->
+
+                            <div class="total-row">
+
+                                <span>
+                                    Diskon Pembelian
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="purchaseDiscount"
+                                    min="0"
+                                    step="0.01"
+                                    value="0"
+                                    placeholder="0"
+                                >
+
+                            </div>
+
+
+                            <!-- BIAYA TAMBAHAN -->
+
+                            <div class="total-row">
+
+                                <span>
+                                    Biaya Tambahan
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="additionalCost"
+                                    min="0"
+                                    step="0.01"
+                                    value="0"
+                                    placeholder="0"
+                                >
+
+                            </div>
+
+
+                            <!-- TOTAL -->
+
+                            <div class="total-final">
+
+                                <strong>
+                                    TOTAL
+                                </strong>
+
+                                <strong id="purchaseTotal">
+                                    Rp 0
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =========================================
+                         PEMBAYARAN
+                    ========================================== -->
+
+                    <div class="form-section">
+
+                        <h3>
+                            Pembayaran
+                        </h3>
+
+                        <p>
+                            Masukkan jumlah pembayaran dan jatuh tempo jika diperlukan.
+                        </p>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- DIBAYAR -->
+
+                            <div class="form-group">
+
+                                <label for="paidAmount">
+                                    Jumlah Dibayar
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="paidAmount"
+                                    min="0"
+                                    step="0.01"
+                                    value="0"
+                                >
+
+                            </div>
+
+
+                            <!-- JATUH TEMPO -->
+
+                            <div class="form-group">
+
+                                <label for="dueDate">
+                                    Tanggal Jatuh Tempo
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="dueDate"
+                                >
+
+                            </div>
+
+
+                            <!-- SISA HUTANG -->
+
+                            <div class="form-group">
+
+                                <label for="remainingDebt">
+                                    Sisa Hutang
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="remainingDebt"
+                                    value="Rp 0"
+                                    readonly
+                                >
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =========================================
+                         CATATAN
+                    ========================================== -->
+
+                    <div class="form-section">
+
+                        <h3>
+                            Catatan
+                        </h3>
+
+                        <p>
+                            Tambahkan catatan jika diperlukan.
+                        </p>
+
+
+                        <div class="form-group">
+
+                            <label for="purchaseNotes">
+                                Catatan Pembelian
+                            </label>
+
+                            <textarea
+                                id="purchaseNotes"
+                                placeholder="Tulis catatan pembelian..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="purchaseMessage"
+                    ></div>
+
+
+
+                    <!-- =========================================
+                         ACTION
+                    ========================================== -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            id="resetPurchaseButton"
+                            class="btn btn-secondary"
+                        >
+                            🔄 Reset
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            id="savePurchaseButton"
+                            class="btn btn-primary"
+                        >
+                            💾 Simpan Pembelian
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RIWAYAT PEMBELIAN
+            ================================================== -->
+
+            <div
+                class="table-panel history-panel"
+                id="riwayat"
+            >
+
+
+                <div class="table-header">
+
+                    <h3>
+                        Riwayat Pembelian
+                    </h3>
+
+                    <p>
+                        Daftar transaksi pembelian yang telah dicatat.
+                    </p>
+
+                </div>
+
+
+
+                <!-- FILTER -->
+
+                <div class="filter-section">
+
+                    <div class="filter-grid">
+
+
+                        <!-- SEARCH -->
+
+                        <div class="form-group">
+
+                            <label for="searchPurchase">
+                                Cari
+                            </label>
+
+                            <input
+                                type="text"
+                                id="searchPurchase"
+                                placeholder="Cari nomor, supplier, invoice..."
+                            >
+
+                        </div>
+
+
+                        <!-- DARI -->
+
+                        <div class="form-group">
+
+                            <label for="purchaseDateFrom">
+                                Dari Tanggal
+                            </label>
+
+                            <input
+                                type="date"
+                                id="purchaseDateFrom"
+                            >
+
+                        </div>
+
+
+                        <!-- SAMPAI -->
+
+                        <div class="form-group">
+
+                            <label for="purchaseDateTo">
+                                Sampai Tanggal
+                            </label>
+
+                            <input
+                                type="date"
+                                id="purchaseDateTo"
+                            >
+
+                        </div>
+
+
+                        <!-- STATUS -->
+
+                        <div class="form-group">
+
+                            <label for="purchaseStatusFilter">
+                                Status
+                            </label>
+
+                            <select
+                                id="purchaseStatusFilter"
+                            >
+
+                                <option value="">
+                                    Semua Status
+                                </option>
+
+                                <option value="PAID">
+                                    Lunas
+                                </option>
+
+                                <option value="PARTIAL">
+                                    Sebagian
+                                </option>
+
+                                <option value="CREDIT">
+                                    Hutang
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TABLE HISTORY -->
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    #
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Nomor Pembelian
+                                </th>
+
+                                <th>
+                                    Supplier
+                                </th>
+
+                                <th>
+                                    Invoice
+                                </th>
+
+                                <th>
+                                    Total
+                                </th>
+
+                                <th>
+                                    Dibayar
+                                </th>
+
+                                <th>
+                                    Sisa Hutang
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="purchaseTableBody"
+                        >
+
+                            <tr>
+
+                                <td
+                                    colspan="10"
+                                    class="empty-table"
+                                >
+                                    Memuat riwayat pembelian...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     SIDEBAR TOGGLE
+========================================================== -->
+
+<script>
+
+function toggleSubmenu(submenuId, arrowId) {
+
+    const submenu =
+        document.getElementById(submenuId);
+
+    const arrow =
+        document.getElementById(arrowId);
+
+
+    if (!submenu) {
+        return;
+    }
+
+
+    const isOpen =
+        submenu.classList.toggle("show");
+
+
+    if (arrow) {
+
+        arrow.classList.toggle(
+            "open",
+            isOpen
+        );
+
+    }
+
+}
+
+
+</script>
+
+
+
+<!-- =========================================================
+     USER
+========================================================== -->
+
+<script>
+
+async function loadUser() {
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/me",
+                {
+                    credentials: "include"
+                }
+            );
+
+
+        if (response.status === 401) {
+
+            window.location.href =
+                "/index.html";
+
+            return;
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        const user =
+            result.user ||
+            result.data ||
+            result;
+
+
+        const userName =
+            document.getElementById(
+                "userName"
+            );
+
+
+        const userRole =
+            document.getElementById(
+                "userRole"
+            );
+
+
+        if (userName) {
+
+            userName.textContent =
+                user.full_name ||
+                user.name ||
+                user.username ||
+                "User";
+
+        }
+
+
+        if (userRole) {
+
+            userRole.textContent =
+                user.role_name ||
+                user.role ||
+                "-";
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "LOAD USER ERROR:",
+            error
+        );
+
+    }
+
+}
+
+
+</script>
+
+
+
+<!-- =========================================================
+     LOGOUT
+========================================================== -->
+
+<script>
+
+async function logout() {
+
+    try {
+
+        await fetch(
+            "/api/logout",
+            {
+                method: "POST",
+                credentials: "include"
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "LOGOUT ERROR:",
+            error
+        );
+
+    }
+
+
+    window.location.href =
+        "/index.html";
+
+}
+
+
+</script>
+
+
+
+<!-- =========================================================
+     LOAD USER
+========================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    loadUser
+);
+
+</script>
+
+
+
+<!-- =========================================================
+     PEMBELIAN JS
+========================================================== -->
+
+<script src="pembelian.js"></script>
+
+</body>
+</html>

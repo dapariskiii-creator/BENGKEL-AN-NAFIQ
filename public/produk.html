@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Produk & Stok - AN-NAFIQ BENGKEL</title>
+
+    <link rel="stylesheet" href="produk.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">🔧</div>
+
+                <div>
+                    <h2>AN-NAFIQ</h2>
+                    <span>BENGKEL</span>
+                </div>
+            </div>
+
+            <nav class="menu">
+
+                <a href="dashboard.html" class="menu-item">
+                    📊 <span>Dashboard</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    🛒 <span>Kasir</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    🔧 <span>Servis</span>
+                </a>
+
+                <a href="produk.html" class="menu-item active">
+                    📦 <span>Produk & Stok</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    🚚 <span>Pembelian</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    💰 <span>Penjualan</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    👥 <span>Pelanggan</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    📋 <span>Piutang</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    💳 <span>Hutang</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    💵 <span>Kas & Keuangan</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    🪙 <span>Pembagian Uang</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    👨‍🔧 <span>Mekanik</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    📈 <span>Laporan</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    ⚙️ <span>Pengaturan</span>
+                </a>
+
+            </nav>
+
+            <button id="logoutButton" class="logout-button">
+                🚪 Keluar
+            </button>
+
+        </aside>
+
+
+        <!-- MAIN -->
+        <main class="main">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div>
+                    <h1>Produk & Stok</h1>
+                    <p>Kelola produk dan persediaan bengkel</p>
+                </div>
+
+                <div class="user-box">
+
+                    <div class="user-icon">
+                        👤
+                    </div>
+
+                    <div>
+                        <strong id="userName">
+                            Memuat...
+                        </strong>
+
+                        <small id="userRole">
+                            ...
+                        </small>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTENT -->
+            <section class="content">
+
+                <!-- HEADER ACTION -->
+                <div class="page-header">
+
+                    <div>
+                        <h2>Daftar Produk</h2>
+
+                        <p>
+                            Tambahkan dan kelola produk sparepart,
+                            oli, aki, jasa dan barang lainnya.
+                        </p>
+                    </div>
+
+                    <button
+                        id="addProductButton"
+                        class="primary-button"
+                    >
+                        + Tambah Produk
+                    </button>
+
+                </div>
+
+
+                <!-- SUMMARY -->
+                <div class="summary-grid">
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            📦
+                        </div>
+
+                        <div>
+                            <span>Total Produk</span>
+                            <strong id="totalProducts">
+                                0
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            ✅
+                        </div>
+
+                        <div>
+                            <span>Stok Tersedia</span>
+                            <strong id="availableProducts">
+                                0
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            ⚠️
+                        </div>
+
+                        <div>
+                            <span>Stok Menipis</span>
+                            <strong id="lowStockProducts">
+                                0
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            ❌
+                        </div>
+
+                        <div>
+                            <span>Stok Habis</span>
+                            <strong id="outOfStockProducts">
+                                0
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FILTER -->
+                <div class="filter-panel">
+
+                    <div class="search-box">
+
+                        <label for="searchProduct">
+                            Cari Produk
+                        </label>
+
+                        <input
+                            type="text"
+                            id="searchProduct"
+                            placeholder="Cari nama, kode atau barcode..."
+                        >
+
+                    </div>
+
+
+                    <div class="filter-box">
+
+                        <label for="categoryFilter">
+                            Kategori
+                        </label>
+
+                        <select id="categoryFilter">
+
+                            <option value="">
+                                Semua Kategori
+                            </option>
+
+                            <option value="Aki">
+                                Aki
+                            </option>
+
+                            <option value="Aksesoris">
+                                Aksesoris
+                            </option>
+
+                            <option value="Ban">
+                                Ban
+                            </option>
+
+                            <option value="Busi">
+                                Busi
+                            </option>
+
+                            <option value="Cairan">
+                                Cairan
+                            </option>
+
+                            <option value="Filter">
+                                Filter
+                            </option>
+
+                            <option value="Jasa Servis">
+                                Jasa Servis
+                            </option>
+
+                            <option value="Lainnya">
+                                Lainnya
+                            </option>
+
+                            <option value="Oli">
+                                Oli
+                            </option>
+
+                            <option value="Sparepart">
+                                Sparepart
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-box">
+
+                        <label for="stockFilter">
+                            Status Stok
+                        </label>
+
+                        <select id="stockFilter">
+
+                            <option value="">
+                                Semua
+                            </option>
+
+                            <option value="available">
+                                Tersedia
+                            </option>
+
+                            <option value="low">
+                                Menipis
+                            </option>
+
+                            <option value="empty">
+                                Habis
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="table-panel">
+
+                    <div class="table-header">
+
+                        <div>
+                            <h3>Data Produk</h3>
+
+                            <p>
+                                Daftar produk yang tersimpan
+                            </p>
+                        </div>
+
+                        <span id="productCount">
+                            0 produk
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>No</th>
+
+                                    <th>Produk</th>
+
+                                    <th>Kode</th>
+
+                                    <th>Kategori</th>
+
+                                    <th>Satuan</th>
+
+                                    <th>Harga Beli</th>
+
+                                    <th>Harga Jual</th>
+
+                                    <th>Stok</th>
+
+                                    <th>Status</th>
+
+                                    <th>Aksi</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="productTableBody">
+
+                                <tr>
+
+                                    <td
+                                        colspan="10"
+                                        class="empty-table"
+                                    >
+
+                                        <div>
+                                            📦
+                                        </div>
+
+                                        <strong>
+                                            Belum ada produk
+                                        </strong>
+
+                                        <p>
+                                            Klik tombol
+                                            "Tambah Produk"
+                                            untuk menambahkan
+                                            produk pertama.
+                                        </p>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- MODAL TAMBAH PRODUK -->
+
+    <div
+        id="productModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Tambah Produk</h2>
+
+                    <p>
+                        Masukkan informasi produk baru.
+                    </p>
+                </div>
+
+                <button
+                    id="closeModalButton"
+                    class="close-button"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="productForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="productCode">
+                            Kode Produk
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productCode"
+                            placeholder="Contoh: OLI001"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="barcode">
+                            Barcode
+                        </label>
+
+                        <input
+                            type="text"
+                            id="barcode"
+                            placeholder="Masukkan barcode"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="productName">
+                            Nama Produk *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productName"
+                            placeholder="Contoh: Oli Mesin 10W-40"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="category">
+                            Kategori *
+                        </label>
+
+                        <select
+                            id="category"
+                            required
+                        >
+
+                            <option value="">
+                                Pilih kategori
+                            </option>
+
+                            <option value="Aki">
+                                Aki
+                            </option>
+
+                            <option value="Aksesoris">
+                                Aksesoris
+                            </option>
+
+                            <option value="Ban">
+                                Ban
+                            </option>
+
+                            <option value="Busi">
+                                Busi
+                            </option>
+
+                            <option value="Cairan">
+                                Cairan
+                            </option>
+
+                            <option value="Filter">
+                                Filter
+                            </option>
+
+                            <option value="Jasa Servis">
+                                Jasa Servis
+                            </option>
+
+                            <option value="Lainnya">
+                                Lainnya
+                            </option>
+
+                            <option value="Oli">
+                                Oli
+                            </option>
+
+                            <option value="Sparepart">
+                                Sparepart
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="unit">
+                            Satuan *
+                        </label>
+
+                        <select
+                            id="unit"
+                            required
+                        >
+
+                            <option value="">
+                                Pilih satuan
+                            </option>
+
+                            <option value="PCS">
+                                PCS
+                            </option>
+
+                            <option value="BOTOL">
+                                BOTOL
+                            </option>
+
+                            <option value="LITER">
+                                LITER
+                            </option>
+
+                            <option value="ML">
+                                ML
+                            </option>
+
+                            <option value="GRAM">
+                                GRAM
+                            </option>
+
+                            <option value="KG">
+                                KG
+                            </option>
+
+                            <option value="DOS">
+                                DOS
+                            </option>
+
+                            <option value="BOX">
+                                BOX
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="buyPrice">
+                            Harga Beli *
+                        </label>
+
+                        <input
+                            type="number"
+                            id="buyPrice"
+                            min="0"
+                            placeholder="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="sellPrice">
+                            Harga Jual *
+                        </label>
+
+                        <input
+                            type="number"
+                            id="sellPrice"
+                            min="0"
+                            placeholder="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="stock">
+                            Stok Awal
+                        </label>
+
+                        <input
+                            type="number"
+                            id="stock"
+                            min="0"
+                            step="0.01"
+                            value="0"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="minimumStock">
+                            Minimum Stok
+                        </label>
+
+                        <input
+                            type="number"
+                            id="minimumStock"
+                            min="0"
+                            step="0.01"
+                            value="0"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="supplier">
+                            Supplier Utama
+                        </label>
+
+                        <input
+                            type="text"
+                            id="supplier"
+                            placeholder="Nama supplier"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="location">
+                            Lokasi Penyimpanan
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="Contoh: Rak A1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="productMessage"
+                    class="form-message"
+                ></div>
+
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        id="cancelProductButton"
+                        class="secondary-button"
+                    >
+                        Batal
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Simpan Produk
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="produk.js"></script>
+
+</body>
+</html>

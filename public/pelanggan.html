@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pelanggan - AN-NAFIQ BENGKEL</title>
+  <link rel="stylesheet" href="pelanggan.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+
+<div class="brand">
+  <div class="brand-icon">🔧</div>
+  <div>
+    <h2>AN-NAFIQ</h2>
+    <span>BENGKEL</span>
+  </div>
+</div>
+
+<nav class="menu">
+
+  <a href="dashboard.html" class="menu-item">
+    <span>📊</span>
+    <span>Dashboard</span>
+  </a>
+
+  <a href="kasir.html" class="menu-item">
+    <span>🛒</span>
+    <span>Kasir</span>
+  </a>
+
+  <a href="servis.html" class="menu-item">
+    <span>🔧</span>
+    <span>Servis</span>
+  </a>
+
+  <button class="menu-item submenu-button" onclick="toggleSubmenu('stokSubmenu', 'stokArrow')">
+    <span>📦</span>
+    <span>Produk & Stok</span>
+    <span class="arrow" id="stokArrow">▼</span>
+  </button>
+
+  <div class="submenu" id="stokSubmenu">
+    <a href="stok.html" class="submenu-item">
+      <span>📋</span>
+      <span>Data Produk</span>
+    </a>
+
+    <a href="stok-masuk.html" class="submenu-item">
+      <span>📥</span>
+      <span>Stok Masuk</span>
+    </a>
+
+    <a href="stok-keluar.html" class="submenu-item">
+      <span>📤</span>
+      <span>Stok Keluar</span>
+    </a>
+
+    <a href="kartu-stok.html" class="submenu-item">
+      <span>📑</span>
+      <span>Kartu Stok</span>
+    </a>
+  </div>
+
+  <button class="menu-item submenu-button" onclick="toggleSubmenu('pembelianSubmenu', 'pembelianArrow')">
+    <span>🛍️</span>
+    <span>Pembelian</span>
+    <span class="arrow" id="pembelianArrow">▼</span>
+  </button>
+
+  <div class="submenu" id="pembelianSubmenu">
+    <a href="pembelian.html" class="submenu-item">
+      <span>➕</span>
+      <span>Pembelian Baru</span>
+    </a>
+
+    <a href="supplier.html" class="submenu-item">
+      <span>🏢</span>
+      <span>Supplier</span>
+    </a>
+
+    <a href="pembelian.html#riwayat" class="submenu-item">
+      <span>📜</span>
+      <span>Riwayat Pembelian</span>
+    </a>
+  </div>
+
+  <a href="penjualan.html" class="menu-item">
+    <span>💰</span>
+    <span>Penjualan</span>
+  </a>
+
+  <a href="pelanggan.html" class="menu-item active">
+    <span>👥</span>
+    <span>Pelanggan</span>
+  </a>
+
+  <a href="piutang.html" class="menu-item">
+    <span>💳</span>
+    <span>Piutang</span>
+  </a>
+
+  <a href="hutang.html" class="menu-item">
+    <span>💸</span>
+    <span>Hutang</span>
+  </a>
+
+  <a href="keuangan.html" class="menu-item">
+    <span>💵</span>
+    <span>Kas & Keuangan</span>
+  </a>
+
+  <a href="pembagian-uang.html" class="menu-item">
+    <span>💰</span>
+    <span>Pembagian Uang</span>
+  </a>
+
+  <a href="mekanik.html" class="menu-item">
+    <span>👨‍🔧</span>
+    <span>Mekanik</span>
+  </a>
+
+  <a href="laporan.html" class="menu-item">
+    <span>📈</span>
+    <span>Laporan</span>
+  </a>
+
+  <a href="pengaturan.html" class="menu-item">
+    <span>⚙️</span>
+    <span>Pengaturan</span>
+  </a>
+
+</nav>
+
+<button class="logout-button" id="logoutButton">
+  🚪 Keluar
+</button>
+
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+
+<header class="topbar">
+
+  <div>
+    <h1>Pelanggan</h1>
+    <p>Kelola data pelanggan AN-NAFIQ BENGKEL</p>
+  </div>
+
+  <div class="user-box">
+    <div class="user-icon">👤</div>
+    <div>
+      <strong id="userName">Memuat...</strong>
+      <small id="userRole">...</small>
+    </div>
+  </div>
+
+</header>
+
+
+<section class="content">
+
+  <!-- HEADER -->
+  <div class="page-header">
+
+    <div>
+      <h2>Data Pelanggan</h2>
+      <p>Simpan dan kelola informasi pelanggan bengkel.</p>
+    </div>
+
+    <button class="add-button" id="addCustomerButton">
+      + Tambah Pelanggan
+    </button>
+
+  </div>
+
+
+  <!-- STAT -->
+  <div class="stats">
+
+    <div class="stat-card">
+      <div class="stat-icon">👥</div>
+      <div>
+        <span>Total Pelanggan</span>
+        <strong id="totalCustomers">0</strong>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">📱</div>
+      <div>
+        <span>Punya Nomor HP</span>
+        <strong id="customersWithPhone">0</strong>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">💳</div>
+      <div>
+        <span>Memiliki Piutang</span>
+        <strong id="customersWithDebt">0</strong>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- TABLE PANEL -->
+  <div class="table-panel">
+
+    <div class="table-header">
+
+      <div>
+        <h3>Daftar Pelanggan</h3>
+        <p id="customerCount">0 pelanggan</p>
+      </div>
+
+      <div class="search-box">
+        <span>🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Cari nama, nomor HP, atau alamat..."
+          autocomplete="off"
+        >
+      </div>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Pelanggan</th>
+            <th>No. HP</th>
+            <th>Alamat</th>
+            <th>Piutang</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+
+        <tbody id="customerTableBody">
+
+          <tr>
+            <td colspan="6">
+              <div class="loading">
+                <div>⏳</div>
+                <p>Memuat data pelanggan...</p>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+  </main>
+
+</div>
+
+<!-- MODAL -->
+
+<div class="modal-overlay" id="customerModal">
+
+  <div class="modal">
+
+
+<div class="modal-header">
+
+  <div>
+    <h3 id="modalTitle">Tambah Pelanggan</h3>
+    <p>Masukkan informasi pelanggan.</p>
+  </div>
+
+  <button class="close-button" id="closeModal">
+    ×
+  </button>
+
+</div>
+
+
+<form id="customerForm">
+
+  <input type="hidden" id="customerId">
+
+  <div class="form-group">
+    <label for="customerName">
+      Nama Pelanggan <span>*</span>
+    </label>
+
+    <input
+      type="text"
+      id="customerName"
+      placeholder="Contoh: Budi Santoso"
+      required
+    >
+  </div>
+
+
+  <div class="form-row">
+
+    <div class="form-group">
+      <label for="customerPhone">
+        Nomor HP
+      </label>
+
+      <input
+        type="text"
+        id="customerPhone"
+        placeholder="08xxxxxxxxxx"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="customerEmail">
+        Email
+      </label>
+
+      <input
+        type="email"
+        id="customerEmail"
+        placeholder="nama@email.com"
+      >
+    </div>
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label for="customerAddress">
+      Alamat
+    </label>
+
+    <textarea
+      id="customerAddress"
+      placeholder="Alamat pelanggan..."
+      rows="3"
+    ></textarea>
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label for="customerNotes">
+      Catatan
+    </label>
+
+    <textarea
+      id="customerNotes"
+      placeholder="Catatan tambahan..."
+      rows="3"
+    ></textarea>
+
+  </div>
+
+
+  <div class="form-actions">
+
+    <button
+      type="button"
+      class="cancel-button"
+      id="cancelButton"
+    >
+      Batal
+    </button>
+
+    <button
+      type="submit"
+      class="save-button"
+      id="saveButton"
+    >
+      Simpan Pelanggan
+    </button>
+
+  </div>
+
+</form>
+
+
+  </div>
+
+</div>
+
+<!-- CONFIRM DELETE -->
+
+<div class="modal-overlay" id="deleteModal">
+
+  <div class="confirm-modal">
+
+
+<div class="confirm-icon">
+  🗑️
+</div>
+
+<h3>Hapus Pelanggan?</h3>
+
+<p id="deleteMessage">
+  Data pelanggan akan dihapus.
+</p>
+
+<div class="confirm-actions">
+
+  <button
+    type="button"
+    class="cancel-button"
+    id="cancelDelete"
+  >
+    Batal
+  </button>
+
+  <button
+    type="button"
+    class="delete-button"
+    id="confirmDelete"
+  >
+    Hapus
+  </button>
+
+</div>
+
+  </div>
+
+</div>
+
+<script src="pelanggan.js"></script>
+
+</body>
+</html>

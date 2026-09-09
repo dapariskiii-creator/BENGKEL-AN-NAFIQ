@@ -1,0 +1,549 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kas & Keuangan | AN-NAFIQ BENGKEL</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="keuangan.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-icon">🔧</div>
+
+            <div>
+                <h2>AN-NAFIQ</h2>
+                <span>BENGKEL</span>
+            </div>
+        </div>
+
+        <div class="sidebar-menu">
+
+            <a href="dashboard.html" class="menu-item">
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="kasir.html" class="menu-item">
+                <span>🛒</span>
+                <span>Kasir</span>
+            </a>
+
+            <a href="servis.html" class="menu-item">
+                <span>🔧</span>
+                <span>Servis</span>
+            </a>
+
+            <div class="menu-group">
+                <div class="menu-title">
+                    <span>📦</span>
+                    <span>Produk & Stok</span>
+                    <span class="arrow">›</span>
+                </div>
+
+                <div class="submenu">
+                    <a href="stok.html">Stok</a>
+                    <a href="stok-masuk.html">Stok Masuk</a>
+                    <a href="stok-keluar.html">Stok Keluar</a>
+                    <a href="kartu-stok.html">Kartu Stok</a>
+                </div>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-title">
+                    <span>🛍️</span>
+                    <span>Pembelian</span>
+                    <span class="arrow">›</span>
+                </div>
+
+                <div class="submenu">
+                    <a href="pembelian.html">Pembelian</a>
+                    <a href="supplier.html">Supplier</a>
+                </div>
+            </div>
+
+            <a href="penjualan.html" class="menu-item">
+                <span>💰</span>
+                <span>Penjualan</span>
+            </a>
+
+            <a href="pelanggan.html" class="menu-item">
+                <span>👥</span>
+                <span>Pelanggan</span>
+            </a>
+
+            <a href="piutang.html" class="menu-item">
+                <span>📋</span>
+                <span>Piutang</span>
+            </a>
+
+            <a href="hutang.html" class="menu-item">
+                <span>🧾</span>
+                <span>Hutang</span>
+            </a>
+
+            <a href="keuangan.html" class="menu-item active">
+                <span>💵</span>
+                <span>Kas & Keuangan</span>
+            </a>
+
+            <a href="pembagian-uang.html" class="menu-item">
+                <span>💸</span>
+                <span>Pembagian Uang</span>
+            </a>
+
+            <a href="mekanik.html" class="menu-item">
+                <span>👨‍🔧</span>
+                <span>Mekanik</span>
+            </a>
+
+            <a href="laporan.html" class="menu-item">
+                <span>📈</span>
+                <span>Laporan</span>
+            </a>
+
+            <a href="pengaturan.html" class="menu-item">
+                <span>⚙️</span>
+                <span>Pengaturan</span>
+            </a>
+
+        </div>
+
+        <div class="sidebar-bottom">
+            <button id="logoutBtn" class="logout-btn">
+                <span>🚪</span>
+                <span>Logout</span>
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <h1>Kas & Keuangan</h1>
+                <p>Kelola arus kas masuk dan kas keluar AN-NAFIQ BENGKEL.</p>
+            </div>
+
+            <div class="user-box">
+                <div class="user-avatar">👤</div>
+
+                <div>
+                    <strong id="ownerName">OWNER</strong>
+                    <small>Administrator</small>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <!-- STAT CARDS -->
+            <div class="stats-grid">
+
+                <div class="stat-card saldo">
+                    <div class="stat-icon">💰</div>
+
+                    <div class="stat-content">
+                        <span>Saldo Kas</span>
+                        <strong id="saldoKas">Rp0</strong>
+                        <small>Saldo saat ini</small>
+                    </div>
+                </div>
+
+
+                <div class="stat-card masuk">
+                    <div class="stat-icon">📥</div>
+
+                    <div class="stat-content">
+                        <span>Kas Masuk Hari Ini</span>
+                        <strong id="kasMasuk">Rp0</strong>
+                        <small>Penjualan & pemasukan</small>
+                    </div>
+                </div>
+
+
+                <div class="stat-card keluar">
+                    <div class="stat-icon">📤</div>
+
+                    <div class="stat-content">
+                        <span>Kas Keluar Hari Ini</span>
+                        <strong id="kasKeluar">Rp0</strong>
+                        <small>Pembelian & pengeluaran</small>
+                    </div>
+                </div>
+
+
+                <div class="stat-card bersih">
+                    <div class="stat-icon">📊</div>
+
+                    <div class="stat-content">
+                        <span>Arus Kas Bersih</span>
+                        <strong id="arusKas">Rp0</strong>
+                        <small>Masuk - keluar hari ini</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ACTION BAR -->
+            <div class="action-bar">
+
+                <div>
+                    <h2>Riwayat Kas</h2>
+                    <p>Semua transaksi kas tercatat di sini.</p>
+                </div>
+
+                <button id="btnTambahPengeluaran" class="btn-primary">
+                    <span>＋</span>
+                    Tambah Pengeluaran
+                </button>
+
+            </div>
+
+
+            <!-- FILTER -->
+            <div class="filter-card">
+
+                <div class="filter-item">
+                    <label for="startDate">Dari Tanggal</label>
+
+                    <input
+                        type="date"
+                        id="startDate"
+                    >
+                </div>
+
+
+                <div class="filter-item">
+                    <label for="endDate">Sampai Tanggal</label>
+
+                    <input
+                        type="date"
+                        id="endDate"
+                    >
+                </div>
+
+
+                <div class="filter-item">
+                    <label for="typeFilter">Jenis</label>
+
+                    <select id="typeFilter">
+                        <option value="all">Semua Transaksi</option>
+                        <option value="IN">Kas Masuk</option>
+                        <option value="OUT">Kas Keluar</option>
+                    </select>
+                </div>
+
+
+                <div class="filter-item">
+                    <label for="paymentFilter">Metode Pembayaran</label>
+
+                    <select id="paymentFilter">
+                        <option value="all">Semua Metode</option>
+                        <option value="CASH">Cash</option>
+                        <option value="TRANSFER">Transfer</option>
+                        <option value="QRIS">QRIS</option>
+                    </select>
+                </div>
+
+
+                <button id="btnFilter" class="btn-filter">
+                    🔍 Filter
+                </button>
+
+                <button id="btnResetFilter" class="btn-reset">
+                    Reset
+                </button>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="summary-row">
+
+                <div class="summary-box">
+                    <span>Total Kas Masuk</span>
+                    <strong id="totalMasuk">Rp0</strong>
+                </div>
+
+                <div class="summary-box">
+                    <span>Total Kas Keluar</span>
+                    <strong id="totalKeluar">Rp0</strong>
+                </div>
+
+                <div class="summary-box">
+                    <span>Jumlah Transaksi</span>
+                    <strong id="totalTransaksi">0</strong>
+                </div>
+
+            </div>
+
+
+            <!-- TABLE -->
+            <div class="table-card">
+
+                <div class="table-header">
+
+                    <div>
+                        <h3>Transaksi Kas</h3>
+                        <span id="tableInfo">Memuat data...</span>
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Jenis</th>
+                                <th>Deskripsi</th>
+                                <th>Referensi</th>
+                                <th>Metode</th>
+                                <th class="text-right">Jumlah</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="cashTableBody">
+
+                            <tr>
+                                <td colspan="6" class="loading">
+                                    Memuat transaksi kas...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL TAMBAH PENGELUARAN -->
+    <div id="expenseModal" class="modal">
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Tambah Pengeluaran</h2>
+                    <p>Catat pengeluaran kas manual.</p>
+                </div>
+
+                <button id="closeExpenseModal" class="modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="expenseForm">
+
+                <div class="form-group">
+
+                    <label for="expenseDate">
+                        Tanggal
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="expenseDate"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="expenseCategory">
+                        Kategori Pengeluaran
+                    </label>
+
+                    <select id="expenseCategory" required>
+
+                        <option value="">
+                            Pilih kategori
+                        </option>
+
+                        <option value="OPERASIONAL">
+                            Operasional
+                        </option>
+
+                        <option value="LISTRIK">
+                            Listrik
+                        </option>
+
+                        <option value="AIR">
+                            Air
+                        </option>
+
+                        <option value="GAJI">
+                            Gaji
+                        </option>
+
+                        <option value="TRANSPORT">
+                            Transport
+                        </option>
+
+                        <option value="PERLENGKAPAN">
+                            Perlengkapan
+                        </option>
+
+                        <option value="LAINNYA">
+                            Lainnya
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="expenseDescription">
+                        Keterangan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="expenseDescription"
+                        placeholder="Contoh: Beli oli untuk operasional"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="expenseAmount">
+                            Jumlah
+                        </label>
+
+                        <input
+                            type="number"
+                            id="expenseAmount"
+                            min="1"
+                            step="1"
+                            placeholder="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="expensePayment">
+                            Metode Pembayaran
+                        </label>
+
+                        <select id="expensePayment" required>
+
+                            <option value="CASH">
+                                Cash
+                            </option>
+
+                            <option value="TRANSFER">
+                                Transfer
+                            </option>
+
+                            <option value="QRIS">
+                                QRIS
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="expenseNotes">
+                        Catatan
+                    </label>
+
+                    <textarea
+                        id="expenseNotes"
+                        rows="3"
+                        placeholder="Catatan tambahan (opsional)"
+                    ></textarea>
+
+                </div>
+
+
+                <div id="expenseError" class="form-error"></div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancelExpense"
+                        class="btn-secondary"
+                    >
+                        Batal
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="saveExpense"
+                        class="btn-primary"
+                    >
+                        Simpan Pengeluaran
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="keuangan.js"></script>
+
+</body>
+</html>

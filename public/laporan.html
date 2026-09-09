@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Laporan - AN-NAFIQ BENGKEL</title>
+
+    <link
+        rel="stylesheet"
+        href="laporan.css"
+    >
+</head>
+
+<body>
+
+<!-- ======================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            AN
+        </div>
+
+        <div>
+            <h2>AN-NAFIQ</h2>
+            <span>BENGKEL</span>
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-menu">
+
+        <a href="index.html">
+            📊 Dashboard
+        </a>
+
+        <a href="kasir.html">
+            🛒 Kasir
+        </a>
+
+        <a href="servis.html">
+            🔧 Servis
+        </a>
+
+        <a href="produk.html">
+            📦 Produk & Stok
+        </a>
+
+        <a href="pembelian.html">
+            🛍️ Pembelian
+        </a>
+
+        <a href="penjualan.html">
+            💰 Penjualan
+        </a>
+
+        <a href="pelanggan.html">
+            👥 Pelanggan
+        </a>
+
+        <a href="piutang.html">
+            📒 Piutang
+        </a>
+
+        <a href="hutang.html">
+            📕 Hutang
+        </a>
+
+        <a href="kas.html">
+            💵 Kas & Keuangan
+        </a>
+
+        <a href="pembagian-uang.html">
+            💸 Pembagian Uang
+        </a>
+
+        <a href="mekanik.html">
+            👨‍🔧 Mekanik
+        </a>
+
+        <a
+            href="laporan.html"
+            class="active"
+        >
+            📈 Laporan
+        </a>
+
+        <a href="pengaturan.html">
+            ⚙️ Pengaturan
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-user">
+
+        <div class="user-icon">
+            👤
+        </div>
+
+        <div>
+            <strong>
+                Owner AN-NAFIQ BENGKEL
+            </strong>
+
+            <small>
+                OWNER
+            </small>
+        </div>
+
+    </div>
+
+
+    <button
+        class="logout-btn"
+        onclick="logout()"
+    >
+        🚪 Keluar
+    </button>
+
+</aside>
+
+
+<!-- ======================================================
+     MAIN
+====================================================== -->
+
+<main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div>
+
+            <h1>
+                📈 Laporan
+            </h1>
+
+            <p>
+                Ringkasan dan laporan keuangan
+                AN-NAFIQ BENGKEL
+            </p>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <button
+                class="btn btn-primary"
+                onclick="refreshReport()"
+            >
+                🔄 Refresh
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                onclick="printReport()"
+            >
+                🖨️ Cetak
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================================================
+         FILTER
+    ================================================== -->
+
+    <section class="filter-card">
+
+        <div class="filter-title">
+            📅 Periode Laporan
+        </div>
+
+
+        <div class="filter-content">
+
+            <div class="form-group">
+
+                <label for="startDate">
+                    Dari Tanggal
+                </label>
+
+                <input
+                    type="date"
+                    id="startDate"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="endDate">
+                    Sampai Tanggal
+                </label>
+
+                <input
+                    type="date"
+                    id="endDate"
+                >
+
+            </div>
+
+
+            <div class="filter-buttons">
+
+                <button
+                    class="btn"
+                    onclick="setToday()"
+                >
+                    Hari Ini
+                </button>
+
+                <button
+                    class="btn"
+                    onclick="setThisMonth()"
+                >
+                    Bulan Ini
+                </button>
+
+                <button
+                    class="btn"
+                    onclick="setThisYear()"
+                >
+                    Tahun Ini
+                </button>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="loadReport()"
+                >
+                    🔎 Tampilkan
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         LOADING
+    ================================================== -->
+
+    <div
+        id="loading"
+        class="loading"
+    >
+        <div class="spinner"></div>
+
+        <span>
+            Memuat laporan...
+        </span>
+    </div>
+
+
+    <!-- ==================================================
+         ERROR
+    ================================================== -->
+
+    <div
+        id="errorBox"
+        class="error-box"
+        style="display:none;"
+    >
+
+        <strong>
+            ⚠️ Terjadi Kesalahan
+        </strong>
+
+        <p id="errorMessage"></p>
+
+    </div>
+
+
+    <!-- ==================================================
+         SUMMARY
+    ================================================== -->
+
+    <section class="summary-grid">
+
+        <!-- OMZET -->
+
+        <div class="summary-card omzet">
+
+            <div class="summary-icon">
+                📈
+            </div>
+
+            <div>
+
+                <span>
+                    OMZET
+                </span>
+
+                <h2 id="totalOmzet">
+                    Rp 0
+                </h2>
+
+                <small>
+                    Penjualan + Servis
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- PENJUALAN -->
+
+        <div class="summary-card sales">
+
+            <div class="summary-icon">
+                💰
+            </div>
+
+            <div>
+
+                <span>
+                    PENJUALAN
+                </span>
+
+                <h2 id="totalPenjualan">
+                    Rp 0
+                </h2>
+
+                <small id="jumlahPenjualan">
+                    0 transaksi
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- SERVIS -->
+
+        <div class="summary-card service">
+
+            <div class="summary-icon">
+                🔧
+            </div>
+
+            <div>
+
+                <span>
+                    SERVIS
+                </span>
+
+                <h2 id="totalServis">
+                    Rp 0
+                </h2>
+
+                <small id="jumlahServis">
+                    0 transaksi
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- PEMBELIAN -->
+
+        <div class="summary-card purchase">
+
+            <div class="summary-icon">
+                🛒
+            </div>
+
+            <div>
+
+                <span>
+                    PEMBELIAN
+                </span>
+
+                <h2 id="totalPembelian">
+                    Rp 0
+                </h2>
+
+                <small id="jumlahPembelian">
+                    0 transaksi
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         ARUS KAS
+    ================================================== -->
+
+    <section class="financial-card">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    💵 Arus Kas
+                </h2>
+
+                <p>
+                    Pemasukan dan pengeluaran
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="financial-grid">
+
+            <div class="financial-item">
+
+                <span>
+                    Pemasukan
+                </span>
+
+                <strong
+                    id="totalPemasukan"
+                    class="income"
+                >
+                    Rp 0
+                </strong>
+
+            </div>
+
+
+            <div class="financial-item">
+
+                <span>
+                    Pengeluaran
+                </span>
+
+                <strong
+                    id="totalPengeluaran"
+                    class="expense"
+                >
+                    Rp 0
+                </strong>
+
+            </div>
+
+
+            <div class="financial-item">
+
+                <span>
+                    Saldo Kas
+                </span>
+
+                <strong id="saldoKas">
+                    Rp 0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         LABA
+    ================================================== -->
+
+    <section class="profit-card">
+
+        <div class="profit-icon">
+            📊
+        </div>
+
+        <div>
+
+            <span>
+                Laba
+            </span>
+
+            <p>
+                Perhitungan sederhana
+            </p>
+
+            <strong id="labaKotor">
+                Rp 0
+            </strong>
+
+            <small>
+                Omzet - Pembelian
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         PIUTANG & HUTANG
+    ================================================== -->
+
+    <section class="debt-grid">
+
+        <!-- PIUTANG -->
+
+        <div class="debt-card receivable">
+
+            <div class="debt-header">
+
+                <div class="debt-icon">
+                    📒
+                </div>
+
+                <div>
+
+                    <h2>
+                        Piutang
+                    </h2>
+
+                    <span id="jumlahPiutang">
+                        0 transaksi
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="debt-body">
+
+                <div>
+                    <span>Total</span>
+
+                    <strong id="totalPiutang">
+                        Rp 0
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Terbayar</span>
+
+                    <strong id="piutangTerbayar">
+                        Rp 0
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Sisa</span>
+
+                    <strong id="piutangSisa">
+                        Rp 0
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HUTANG -->
+
+        <div class="debt-card payable">
+
+            <div class="debt-header">
+
+                <div class="debt-icon">
+                    📕
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        Hutang
+                    </h2>
+
+                    <span id="jumlahHutang">
+                        0 transaksi
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="debt-body">
+
+                <div>
+                    <span>Total</span>
+
+                    <strong id="totalHutang">
+                        Rp 0
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Terbayar</span>
+
+                    <strong id="hutangTerbayar">
+                        Rp 0
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Sisa</span>
+
+                    <strong id="hutangSisa">
+                        Rp 0
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         LAPORAN PENJUALAN
+    ================================================== -->
+
+    <section class="report-section">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    💰 Laporan Penjualan
+                </h2>
+
+                <p>
+                    Daftar transaksi penjualan
+                </p>
+
+            </div>
+
+            <span
+                id="salesCount"
+                class="count-badge"
+            >
+                0 transaksi
+            </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>No</th>
+                        <th>Invoice</th>
+                        <th>Tanggal</th>
+                        <th>Subtotal</th>
+                        <th>Diskon</th>
+                        <th>Total</th>
+                        <th>Pembayaran</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="salesTableBody">
+
+                    <tr>
+                        <td
+                            colspan="8"
+                            class="empty-state"
+                        >
+                            Memuat data...
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         LAPORAN SERVIS
+    ================================================== -->
+
+    <section class="report-section">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    🔧 Laporan Servis
+                </h2>
+
+                <p>
+                    Daftar pekerjaan servis kendaraan
+                </p>
+
+            </div>
+
+            <span
+                id="servicesCount"
+                class="count-badge"
+            >
+                0 transaksi
+            </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>No</th>
+                        <th>No. Servis</th>
+                        <th>Tanggal</th>
+                        <th>Pelanggan</th>
+                        <th>Kendaraan</th>
+                        <th>Mekanik</th>
+                        <th>Status</th>
+                        <th>Total</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="servicesTableBody">
+
+                    <tr>
+
+                        <td
+                            colspan="8"
+                            class="empty-state"
+                        >
+                            Memuat data...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         LAPORAN PEMBELIAN
+    ================================================== -->
+
+    <section class="report-section">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    🛍️ Laporan Pembelian
+                </h2>
+
+                <p>
+                    Daftar transaksi pembelian barang
+                </p>
+
+            </div>
+
+            <span
+                id="purchasesCount"
+                class="count-badge"
+            >
+                0 transaksi
+            </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>No</th>
+                        <th>No. Pembelian</th>
+                        <th>Tanggal</th>
+                        <th>Supplier</th>
+                        <th>Subtotal</th>
+                        <th>Diskon</th>
+                        <th>Total</th>
+                        <th>Dibayar</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="purchasesTableBody">
+
+                    <tr>
+
+                        <td
+                            colspan="9"
+                            class="empty-state"
+                        >
+                            Memuat data...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         LAPORAN KAS
+    ================================================== -->
+
+    <section class="report-section">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    💵 Laporan Kas
+                </h2>
+
+                <p>
+                    Daftar pemasukan dan pengeluaran kas
+                </p>
+
+            </div>
+
+            <span
+                id="cashCount"
+                class="count-badge"
+            >
+                0 transaksi
+            </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Jenis</th>
+                        <th>Jumlah</th>
+                        <th>Pembayaran</th>
+                        <th>Sumber</th>
+                        <th>Keterangan</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="cashTableBody">
+
+                    <tr>
+
+                        <td
+                            colspan="7"
+                            class="empty-state"
+                        >
+                            Memuat data...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+
+    <footer class="footer">
+
+        <strong>
+            AN-NAFIQ BENGKEL
+        </strong>
+
+        <span>
+            Sistem Pembukuan & Manajemen Bengkel
+        </span>
+
+    </footer>
+
+</main>
+
+
+<!-- ======================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="laporan.js"></script>
+
+</body>
+</html>

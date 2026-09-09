@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mekanik - AN-NAFIQ BENGKEL</title>
+
+    <link rel="stylesheet" href="mekanik.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">🔧</div>
+
+            <div>
+                <h2>AN-NAFIQ</h2>
+                <span>BENGKEL</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">📊 Dashboard</a>
+            <a href="kasir.html">🛒 Kasir</a>
+            <a href="servis.html">🔧 Servis</a>
+
+            <a href="produk.html">📦 Produk & Stok</a>
+            <a href="pembelian.html">🛍️ Pembelian</a>
+            <a href="penjualan.html">💰 Penjualan</a>
+
+            <a href="pelanggan.html">👥 Pelanggan</a>
+            <a href="piutang.html">📋 Piutang</a>
+            <a href="hutang.html">🧾 Hutang</a>
+
+            <a href="keuangan.html">💵 Kas & Keuangan</a>
+            <a href="pembagian-uang.html">💸 Pembagian Uang</a>
+
+            <a href="mekanik.html" class="active">👨‍🔧 Mekanik</a>
+
+            <a href="laporan.html">📈 Laporan</a>
+            <a href="pengaturan.html">⚙️ Pengaturan</a>
+
+            <a href="#" id="logoutBtn">🚪 Logout</a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div>
+                <h1>👨‍🔧 Mekanik</h1>
+
+                <p>
+                    Kelola data mekanik bengkel AN-NAFIQ.
+                </p>
+            </div>
+
+            <div class="user-info">
+                <span>👤</span>
+
+                <div>
+                    <strong id="userName">
+                        AN-NAFIQ BENGKEL
+                    </strong>
+
+                    <small>OWNER</small>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <!-- STATISTICS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        👨‍🔧
+                    </div>
+
+                    <div>
+                        <span>Total Mekanik</span>
+                        <strong id="totalMechanics">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🟢
+                    </div>
+
+                    <div>
+                        <span>Mekanik Aktif</span>
+                        <strong id="activeMechanics">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🔴
+                    </div>
+
+                    <div>
+                        <span>Mekanik Nonaktif</span>
+                        <strong id="inactiveMechanics">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MEKANIK CARD -->
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Daftar Mekanik</h2>
+
+                        <p>
+                            Semua mekanik yang terdaftar di bengkel.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn-primary"
+                        id="addMechanicBtn"
+                    >
+                        ＋ Tambah Mekanik
+                    </button>
+
+                </div>
+
+
+                <!-- SEARCH -->
+                <div class="toolbar">
+
+                    <div class="search-box">
+
+                        <span>🔍</span>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Cari nama, nomor HP, atau spesialisasi..."
+                        >
+
+                    </div>
+
+
+                    <select id="statusFilter">
+
+                        <option value="ALL">
+                            Semua Status
+                        </option>
+
+                        <option value="ACTIVE">
+                            Aktif
+                        </option>
+
+                        <option value="INACTIVE">
+                            Nonaktif
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>No</th>
+                                <th>Nama Mekanik</th>
+                                <th>No. HP</th>
+                                <th>Spesialisasi</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="mechanicsTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="empty-state"
+                                >
+                                    Belum ada data mekanik.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL MEKANIK -->
+    <div
+        class="modal"
+        id="mechanicModal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2 id="modalTitle">
+                        Tambah Mekanik
+                    </h2>
+
+                    <p>
+                        Isi data mekanik dengan lengkap.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeModalBtn"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="mechanicForm">
+
+                <input
+                    type="hidden"
+                    id="mechanicId"
+                >
+
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Nama Mekanik *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        required
+                        placeholder="Contoh: Budi"
+                    >
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            No. HP
+                        </label>
+
+                        <input
+                            type="text"
+                            id="phone"
+                            placeholder="08xxxxxxxxxx"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="specialization">
+                            Spesialisasi
+                        </label>
+
+                        <input
+                            type="text"
+                            id="specialization"
+                            placeholder="Contoh: Mesin"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="status">
+                        Status
+                    </label>
+
+                    <select id="status">
+
+                        <option value="ACTIVE">
+                            Aktif
+                        </option>
+
+                        <option value="INACTIVE">
+                            Nonaktif
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="address">
+                        Alamat
+                    </label>
+
+                    <textarea
+                        id="address"
+                        rows="3"
+                        placeholder="Alamat mekanik..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="notes">
+                        Catatan
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        rows="3"
+                        placeholder="Catatan tambahan..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        id="cancelBtn"
+                    >
+                        Batal
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-primary"
+                    >
+                        💾 Simpan Mekanik
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="mekanik.js"></script>
+
+</body>
+</html>

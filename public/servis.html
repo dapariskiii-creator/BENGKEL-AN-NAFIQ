@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servis - AN-NAFIQ BENGKEL</title>
+    <link rel="stylesheet" href="servis.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">AN</div>
+            <div>
+                <h2>AN-NAFIQ</h2>
+                <span>BENGKEL</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+
+            <a href="index.html" class="menu-item">
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="kasir.html" class="menu-item">
+                <span>🛒</span>
+                <span>Kasir</span>
+            </a>
+
+            <a href="servis.html" class="menu-item active">
+                <span>🔧</span>
+                <span>Servis</span>
+            </a>
+
+            <!-- PRODUK -->
+            <button class="menu-item menu-parent" onclick="toggleSubmenu('produkSubmenu')">
+                <span>📦</span>
+                <span>Produk & Stok</span>
+                <b>⌄</b>
+            </button>
+
+            <div class="submenu" id="produkSubmenu">
+                <a href="produk.html">📦 Produk</a>
+                <a href="stok.html">📊 Stok</a>
+                <a href="stok-masuk.html">➕ Stok Masuk</a>
+                <a href="stok-keluar.html">➖ Stok Keluar</a>
+            </div>
+
+            <!-- PEMBELIAN -->
+            <button class="menu-item menu-parent" onclick="toggleSubmenu('pembelianSubmenu')">
+                <span>🛍️</span>
+                <span>Pembelian</span>
+                <b>⌄</b>
+            </button>
+
+            <div class="submenu" id="pembelianSubmenu">
+                <a href="pembelian.html">🛍️ Pembelian</a>
+                <a href="supplier.html">🚚 Supplier</a>
+            </div>
+
+            <a href="penjualan.html" class="menu-item">
+                <span>💰</span>
+                <span>Penjualan</span>
+            </a>
+
+            <a href="pelanggan.html" class="menu-item">
+                <span>👥</span>
+                <span>Pelanggan</span>
+            </a>
+
+            <a href="piutang.html" class="menu-item">
+                <span>📒</span>
+                <span>Piutang</span>
+            </a>
+
+            <a href="hutang.html" class="menu-item">
+                <span>📕</span>
+                <span>Hutang</span>
+            </a>
+
+            <a href="kas.html" class="menu-item">
+                <span>💵</span>
+                <span>Kas & Keuangan</span>
+            </a>
+
+            <a href="pembagian-uang.html" class="menu-item">
+                <span>💸</span>
+                <span>Pembagian Uang</span>
+            </a>
+
+            <a href="mekanik.html" class="menu-item">
+                <span>👨‍🔧</span>
+                <span>Mekanik</span>
+            </a>
+
+            <a href="laporan.html" class="menu-item">
+                <span>📈</span>
+                <span>Laporan</span>
+            </a>
+
+            <a href="pengaturan.html" class="menu-item">
+                <span>⚙️</span>
+                <span>Pengaturan</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="user-box">
+                <div class="user-avatar">👤</div>
+                <div>
+                    <strong id="userName">User</strong>
+                    <small id="userRole">-</small>
+                </div>
+            </div>
+
+            <button class="logout-btn" onclick="logout()">
+                🚪 Keluar
+            </button>
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <header class="topbar">
+            <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+
+            <div>
+                <h1>Servis</h1>
+                <p>Kelola pekerjaan servis kendaraan</p>
+            </div>
+
+            <button class="btn-primary" onclick="openServiceForm()">
+                ＋ Servis Baru
+            </button>
+        </header>
+
+
+        <!-- STAT -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <div>
+                    <span>Menunggu</span>
+                    <strong id="waitingCount">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🔧</div>
+                <div>
+                    <span>Dikerjakan</span>
+                    <strong id="workingCount">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div>
+                    <span>Selesai</span>
+                    <strong id="completedCount">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div>
+                    <span>Omzet Servis</span>
+                    <strong id="serviceRevenue">Rp 0</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- TOOLBAR -->
+        <section class="toolbar">
+
+            <div class="search-box">
+                🔎
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Cari pelanggan, kendaraan, atau nomor servis..."
+                    oninput="renderServices()"
+                >
+            </div>
+
+            <select id="statusFilter" onchange="renderServices()">
+                <option value="all">Semua Status</option>
+                <option value="MENUNGGU">Menunggu</option>
+                <option value="DIKERJAKAN">Dikerjakan</option>
+                <option value="SELESAI">Selesai</option>
+                <option value="DIAMBIL">Diambil</option>
+                <option value="BATAL">Batal</option>
+            </select>
+
+            <button class="btn-refresh" onclick="loadServices()">
+                🔄 Refresh
+            </button>
+
+        </section>
+
+
+        <!-- SERVICE LIST -->
+        <section class="service-list" id="serviceList">
+
+            <div class="loading">
+                Memuat data servis...
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL SERVIS -->
+<div class="modal" id="serviceModal">
+
+    <div class="modal-box large">
+
+        <div class="modal-header">
+            <div>
+                <h2 id="modalTitle">Servis Baru</h2>
+                <p>Buat work order servis kendaraan</p>
+            </div>
+
+            <button class="close-btn" onclick="closeServiceForm()">×</button>
+        </div>
+
+
+        <form id="serviceForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Nama Pelanggan</label>
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Nama pelanggan"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>No. HP</label>
+                    <input
+                        type="text"
+                        id="customerPhone"
+                        placeholder="08xxxxxxxxxx"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>No. Polisi</label>
+                    <input
+                        type="text"
+                        id="vehiclePlate"
+                        placeholder="N 1234 XX"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Kendaraan</label>
+                    <input
+                        type="text"
+                        id="vehicleName"
+                        placeholder="Contoh: Honda Beat"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>KM Kendaraan</label>
+                    <input
+                        type="number"
+                        id="vehicleKm"
+                        placeholder="0"
+                        min="0"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Mekanik</label>
+                    <select id="mechanicSelect">
+                        <option value="">Pilih mekanik</option>
+                    </select>
+                </div>
+
+                <div class="form-group full">
+                    <label>Keluhan Pelanggan</label>
+                    <textarea
+                        id="complaint"
+                        rows="3"
+                        placeholder="Tuliskan keluhan pelanggan..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group full">
+                    <label>Catatan Mekanik</label>
+                    <textarea
+                        id="mechanicNotes"
+                        rows="3"
+                        placeholder="Catatan pemeriksaan / pekerjaan..."
+                    ></textarea>
+                </div>
+
+            </div>
+
+
+            <!-- ITEMS -->
+            <div class="items-section">
+
+                <div class="section-title">
+                    <h3>🔧 Pekerjaan & Sparepart</h3>
+
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        onclick="addServiceItem()"
+                    >
+                        ＋ Tambah Item
+                    </button>
+                </div>
+
+                <div id="serviceItems"></div>
+
+            </div>
+
+
+            <!-- TOTAL -->
+            <div class="total-box">
+
+                <div>
+                    <span>Subtotal</span>
+                    <strong id="subtotalDisplay">Rp 0</strong>
+                </div>
+
+                <div>
+                    <span>Diskon</span>
+
+                    <input
+                        type="number"
+                        id="discountInput"
+                        value="0"
+                        min="0"
+                        oninput="calculateTotal()"
+                    >
+                </div>
+
+                <div class="grand-total">
+                    <span>Total</span>
+                    <strong id="totalDisplay">Rp 0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <label>Status</label>
+
+                <select id="serviceStatus">
+                    <option value="MENUNGGU">Menunggu</option>
+                    <option value="DIKERJAKAN">Dikerjakan</option>
+                    <option value="SELESAI">Selesai</option>
+                    <option value="DIAMBIL">Diambil</option>
+                    <option value="BATAL">Batal</option>
+                </select>
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn-cancel"
+                    onclick="closeServiceForm()"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                >
+                    💾 Simpan Servis
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- DETAIL MODAL -->
+<div class="modal" id="detailModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Detail Servis</h2>
+                <p id="detailServiceNumber">-</p>
+            </div>
+
+            <button class="close-btn" onclick="closeDetail()">×</button>
+
+        </div>
+
+        <div id="serviceDetail"></div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+
+<script src="servis.js"></script>
+
+</body>
+</html>

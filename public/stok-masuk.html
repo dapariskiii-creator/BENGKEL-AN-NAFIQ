@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stok Masuk - AN-NAFIQ BENGKEL</title>
+
+    <link rel="stylesheet" href="stok-masuk.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🔧
+            </div>
+
+            <div>
+                <h2>AN-NAFIQ</h2>
+                <span>BENGKEL</span>
+            </div>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="/dashboard.html" class="menu-item">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>🛒</span>
+                Kasir
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>🔧</span>
+                Servis
+            </a>
+
+
+            <!-- =========================
+                 PRODUK & STOK
+            ========================== -->
+
+            <a href="/stok.html" class="menu-item active">
+                <span>📦</span>
+                Produk & Stok
+            </a>
+
+
+            <div class="submenu">
+
+                <a href="/stok.html" class="submenu-item">
+                    <span>📦</span>
+                    Data Produk
+                </a>
+
+                <a href="/stok-masuk.html" class="submenu-item active">
+                    <span>📥</span>
+                    Stok Masuk
+                </a>
+
+                <a href="/stok-keluar.html" class="submenu-item">
+                    <span>📤</span>
+                    Stok Keluar
+                </a>
+
+                <a href="/kartu-stok.html" class="submenu-item">
+                    <span>📋</span>
+                    Kartu Stok
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 PEMBELIAN
+            ========================== -->
+
+            <a href="/pembelian.html" class="menu-item">
+                <span>🚚</span>
+                Pembelian
+            </a>
+
+
+            <div class="submenu">
+
+                <a href="/pembelian.html" class="submenu-item">
+                    <span>🛒</span>
+                    Pembelian Baru
+                </a>
+
+                <a href="/supplier.html" class="submenu-item">
+                    <span>🏭</span>
+                    Supplier
+                </a>
+
+                <a href="/pembelian.html#riwayat" class="submenu-item">
+                    <span>📋</span>
+                    Riwayat Pembelian
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 MENU LAIN
+            ========================== -->
+
+            <a href="#" class="menu-item">
+                <span>💰</span>
+                Penjualan
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>👥</span>
+                Pelanggan
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>📋</span>
+                Piutang
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>💳</span>
+                Hutang
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>💵</span>
+                Kas & Keuangan
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>🪙</span>
+                Pembagian Uang
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>👨‍🔧</span>
+                Mekanik
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>📈</span>
+                Laporan
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>⚙️</span>
+                Pengaturan
+            </a>
+
+        </nav>
+
+
+        <button
+            id="logoutButton"
+            class="logout-button"
+            type="button"
+            onclick="logout()"
+        >
+            🚪 Keluar
+        </button>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+
+        <!-- =========================
+             TOPBAR
+        ========================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Stok Masuk
+                </h1>
+
+                <p>
+                    Tambahkan stok produk ke gudang
+                </p>
+
+            </div>
+
+
+            <div class="user-box">
+
+                <div class="user-icon">
+                    👤
+                </div>
+
+                <div>
+
+                    <strong id="userName">
+                        Memuat...
+                    </strong>
+
+                    <small id="userRole">
+                        ...
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             CONTENT
+        ========================== -->
+
+        <section class="content">
+
+
+            <!-- =========================
+                 HEADER
+            ========================== -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>
+                        📥 Stok Masuk
+                    </h2>
+
+                    <p>
+                        Catat penambahan stok barang secara manual.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 FORM
+            ========================== -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Tambah Stok
+                        </h3>
+
+                        <p>
+                            Pilih produk kemudian masukkan jumlah stok.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="stockInForm">
+
+                    <div class="form-grid">
+
+
+                        <!-- PRODUK -->
+
+                        <div class="form-group">
+
+                            <label for="product">
+                                Produk <span>*</span>
+                            </label>
+
+                            <select
+                                id="product"
+                                required
+                            >
+
+                                <option value="">
+                                    Pilih produk
+                                </option>
+
+                            </select>
+
+                            <small
+                                id="productInfo"
+                                class="product-info"
+                            ></small>
+
+                        </div>
+
+
+                        <!-- JUMLAH -->
+
+                        <div class="form-group">
+
+                            <label for="quantity">
+                                Jumlah Stok <span>*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="quantity"
+                                min="0.01"
+                                step="0.01"
+                                placeholder="Contoh: 10"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- HARGA -->
+
+                        <div class="form-group">
+
+                            <label for="unitCost">
+                                Harga Modal / Unit
+                            </label>
+
+                            <input
+                                type="number"
+                                id="unitCost"
+                                min="0"
+                                step="0.01"
+                                placeholder="Contoh: 25000"
+                            >
+
+                        </div>
+
+
+                        <!-- TANGGAL -->
+
+                        <div class="form-group">
+
+                            <label for="movementDate">
+                                Tanggal <span>*</span>
+                            </label>
+
+                            <input
+                                type="date"
+                                id="movementDate"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- REFERENSI -->
+
+                        <div class="form-group">
+
+                            <label for="reference">
+                                Referensi
+                            </label>
+
+                            <input
+                                type="text"
+                                id="reference"
+                                placeholder="Contoh: Pembelian / Koreksi"
+                            >
+
+                        </div>
+
+
+                        <!-- CATATAN -->
+
+                        <div class="form-group full">
+
+                            <label for="notes">
+                                Catatan
+                            </label>
+
+                            <textarea
+                                id="notes"
+                                rows="4"
+                                placeholder="Catatan stok masuk..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="stockInMessage"
+                        class="message"
+                    ></div>
+
+
+                    <!-- ACTION -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="reset"
+                            class="btn btn-secondary"
+                            id="resetButton"
+                        >
+                            Reset
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            id="saveButton"
+                        >
+                            📥 Simpan Stok Masuk
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- =========================
+                 INFO
+            ========================== -->
+
+            <div class="info-grid">
+
+                <div class="info-card">
+
+                    <span>
+                        📦
+                    </span>
+
+                    <div>
+
+                        <strong id="totalProducts">
+                            0
+                        </strong>
+
+                        <small>
+                            Total Produk
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>
+                        📥
+                    </span>
+
+                    <div>
+
+                        <strong id="lowStockProducts">
+                            0
+                        </strong>
+
+                        <small>
+                            Stok Menipis
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 RIWAYAT
+            ========================== -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            📋 Riwayat Stok Masuk
+                        </h3>
+
+                        <p>
+                            Aktivitas penambahan stok terbaru.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        onclick="loadHistory()"
+                    >
+                        🔄 Refresh
+                    </button>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Produk
+                                </th>
+
+                                <th>
+                                    Jumlah
+                                </th>
+
+                                <th>
+                                    Harga Modal
+                                </th>
+
+                                <th>
+                                    Saldo Setelah
+                                </th>
+
+                                <th>
+                                    Referensi
+                                </th>
+
+                                <th>
+                                    Catatan
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="historyBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="8"
+                                    class="empty"
+                                >
+                                    Memuat riwayat...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================
+     USER & LOGOUT
+========================== -->
+
+<script>
+
+async function loadUser() {
+
+    try {
+
+        const response = await fetch(
+            "/api/me",
+            {
+                credentials: "include"
+            }
+        );
+
+
+        if (response.status === 401) {
+
+            window.location.href = "/index.html";
+
+            return;
+        }
+
+
+        const data = await response.json();
+
+
+        if (data.user) {
+
+            document.getElementById("userName").textContent =
+                data.user.full_name ||
+                data.user.username ||
+                "-";
+
+
+            document.getElementById("userRole").textContent =
+                data.user.role_name ||
+                data.user.role ||
+                "-";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "LOAD USER ERROR:",
+            error
+        );
+
+    }
+
+}
+
+
+async function logout() {
+
+    try {
+
+        await fetch(
+            "/api/logout",
+            {
+                method: "POST",
+                credentials: "include"
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "LOGOUT ERROR:",
+            error
+        );
+
+    }
+
+
+    window.location.href = "/index.html";
+
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadUser();
+
+    }
+);
+
+</script>
+
+
+<script src="stok-masuk.js"></script>
+
+</body>
+
+</html>

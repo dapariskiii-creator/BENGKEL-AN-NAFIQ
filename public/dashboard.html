@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AN-NAFIQ BENGKEL</title>
+
+```
+<link rel="stylesheet" href="dashboard.css">
+
+<style>
+    .sidebar .menu-item.has-submenu {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .sidebar .menu-item.has-submenu > span:nth-child(2) {
+        flex: 1;
+    }
+
+    .submenu-arrow {
+        margin-left: auto;
+        width: auto !important;
+        min-width: auto !important;
+        transition: transform 0.2s ease;
+        font-size: 11px;
+    }
+
+    .submenu-arrow.open {
+        transform: rotate(180deg);
+    }
+
+    .sidebar .submenu {
+        display: none;
+        flex-direction: column;
+        gap: 3px;
+        margin: -2px 0 8px 22px;
+        padding-left: 12px;
+        border-left: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .sidebar .submenu.show {
+        display: flex;
+    }
+
+    .sidebar .submenu-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 10px;
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.72);
+        text-decoration: none;
+        font-size: 13px;
+        transition: all 0.2s ease;
+    }
+
+    .sidebar .submenu-item:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+    }
+
+    .sidebar .submenu-item span:first-child {
+        width: 20px;
+        min-width: 20px;
+        text-align: center;
+    }
+
+    .sidebar .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .sidebar .menu-item > span:first-child {
+        width: 20px;
+        min-width: 20px;
+        text-align: center;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="app">
+
+```
+<!-- ================================= -->
+<!-- SIDEBAR -->
+<!-- ================================= -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🔧
+        </div>
+
+        <div>
+            <h2>AN-NAFIQ</h2>
+            <span>BENGKEL</span>
+        </div>
+
+    </div>
+
+
+    <nav class="menu">
+
+        <!-- DASHBOARD -->
+
+        <a href="dashboard.html" class="menu-item active">
+            <span>📊</span>
+            <span>Dashboard</span>
+        </a>
+
+
+        <!-- KASIR -->
+
+        <a href="kasir.html" class="menu-item">
+            <span>🛒</span>
+            <span>Kasir</span>
+        </a>
+
+
+        <!-- SERVIS -->
+
+        <a href="servis.html" class="menu-item">
+            <span>🔧</span>
+            <span>Servis</span>
+        </a>
+
+
+        <!-- PRODUK & STOK -->
+
+        <div
+            class="menu-item has-submenu"
+            id="menuProdukStok"
+            onclick="toggleSubmenu('produkStokSubmenu', 'produkStokArrow')"
+        >
+
+            <span>📦</span>
+            <span>Produk & Stok</span>
+            <span class="submenu-arrow" id="produkStokArrow">▼</span>
+
+        </div>
+
+
+        <div class="submenu" id="produkStokSubmenu">
+
+            <a href="stok.html" class="submenu-item">
+                <span>📦</span>
+                <span>Data Produk</span>
+            </a>
+
+            <a href="stok-masuk.html" class="submenu-item">
+                <span>📥</span>
+                <span>Stok Masuk</span>
+            </a>
+
+            <a href="stok-keluar.html" class="submenu-item">
+                <span>📤</span>
+                <span>Stok Keluar</span>
+            </a>
+
+            <a href="kartu-stok.html" class="submenu-item">
+                <span>📋</span>
+                <span>Kartu Stok</span>
+            </a>
+
+        </div>
+
+
+        <!-- PEMBELIAN -->
+
+        <div
+            class="menu-item has-submenu"
+            id="menuPembelian"
+            onclick="toggleSubmenu('pembelianSubmenu', 'pembelianArrow')"
+        >
+
+            <span>🚚</span>
+            <span>Pembelian</span>
+            <span class="submenu-arrow" id="pembelianArrow">▼</span>
+
+        </div>
+
+
+        <div class="submenu" id="pembelianSubmenu">
+
+            <a href="pembelian.html" class="submenu-item">
+                <span>🛒</span>
+                <span>Pembelian Baru</span>
+            </a>
+
+            <a href="supplier.html" class="submenu-item">
+                <span>🏭</span>
+                <span>Supplier</span>
+            </a>
+
+            <a href="pembelian.html#riwayat" class="submenu-item">
+                <span>📋</span>
+                <span>Riwayat Pembelian</span>
+            </a>
+
+        </div>
+
+
+        <!-- PENJUALAN -->
+
+        <a href="penjualan.html" class="menu-item">
+            <span>💰</span>
+            <span>Penjualan</span>
+        </a>
+
+
+        <!-- PELANGGAN -->
+
+        <a href="pelanggan.html" class="menu-item">
+            <span>👥</span>
+            <span>Pelanggan</span>
+        </a>
+
+
+        <!-- PIUTANG -->
+
+        <a href="piutang.html" class="menu-item">
+            <span>📋</span>
+            <span>Piutang</span>
+        </a>
+
+
+        <!-- HUTANG -->
+
+        <a href="hutang.html" class="menu-item">
+            <span>💳</span>
+            <span>Hutang</span>
+        </a>
+
+
+        <!-- KAS & KEUANGAN -->
+
+        <a href="keuangan.html" class="menu-item">
+            <span>💵</span>
+            <span>Kas & Keuangan</span>
+        </a>
+
+
+        <!-- PEMBAGIAN UANG -->
+
+        <a href="pembagian-uang.html" class="menu-item">
+            <span>🪙</span>
+            <span>Pembagian Uang</span>
+        </a>
+
+
+        <!-- MEKANIK -->
+
+        <a href="mekanik.html" class="menu-item">
+            <span>👨‍🔧</span>
+            <span>Mekanik</span>
+        </a>
+
+
+        <!-- LAPORAN -->
+
+        <a href="laporan.html" class="menu-item">
+            <span>📈</span>
+            <span>Laporan</span>
+        </a>
+
+
+        <!-- PENGATURAN -->
+
+        <a href="pengaturan.html" class="menu-item">
+            <span>⚙️</span>
+            <span>Pengaturan</span>
+        </a>
+
+    </nav>
+
+
+    <!-- LOGOUT -->
+
+    <button
+        id="logoutButton"
+        class="logout-button"
+    >
+        🚪 Keluar
+    </button>
+
+</aside>
+
+
+<!-- ================================= -->
+<!-- MAIN -->
+<!-- ================================= -->
+
+<main class="main">
+
+    <header class="topbar">
+
+        <div>
+            <h1>Dashboard</h1>
+            <p>Ringkasan AN-NAFIQ BENGKEL</p>
+        </div>
+
+        <div class="user-box">
+
+            <div class="user-icon">
+                👤
+            </div>
+
+            <div>
+
+                <strong id="userName">
+                    Memuat...
+                </strong>
+
+                <small id="userRole">
+                    ...
+                </small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <section class="content">
+
+        <div class="welcome">
+
+            <div>
+
+                <h2>
+                    Selamat datang di AN-NAFIQ BENGKEL
+                </h2>
+
+                <p>
+                    Kelola penjualan, servis, stok,
+                    pembelian, dan keuangan bengkel.
+                </p>
+
+            </div>
+
+            <div class="date-box">
+
+                <span>
+                    Hari ini
+                </span>
+
+                <strong id="todayDate">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATISTIK -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <span>
+                        Omzet Hari Ini
+                    </span>
+
+                    <strong>
+                        Rp 0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <span>
+                        Piutang
+                    </span>
+
+                    <strong>
+                        Rp 0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💳
+                </div>
+
+                <div>
+
+                    <span>
+                        Hutang
+                    </span>
+
+                    <strong>
+                        Rp 0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Produk
+                    </span>
+
+                    <strong>
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PIUTANG & HUTANG -->
+
+        <div class="grid-2">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Piutang Pelanggan
+                        </h3>
+
+                        <p>
+                            Total piutang yang belum dibayar.
+                        </p>
+
+                    </div>
+
+                    <div class="badge warning">
+                        Rp 0
+                    </div>
+
+                </div>
+
+                <div class="empty">
+
+                    <div>
+                        📋
+                    </div>
+
+                    <p>
+                        Belum ada data piutang.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Hutang Supplier
+                        </h3>
+
+                        <p>
+                            Total hutang kepada supplier.
+                        </p>
+
+                    </div>
+
+                    <div class="badge danger">
+                        Rp 0
+                    </div>
+
+                </div>
+
+                <div class="empty">
+
+                    <div>
+                        💳
+                    </div>
+
+                    <p>
+                        Belum ada data hutang.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STOK -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h3>
+                        Ringkasan Stok
+                    </h3>
+
+                    <p>
+                        Kondisi persediaan produk bengkel.
+                    </p>
+
+                </div>
+
+                <a
+                    href="stok.html"
+                    class="view-button"
+                >
+                    Lihat Produk
+                </a>
+
+            </div>
+
+
+            <div class="stock-grid">
+
+                <div class="stock-item">
+
+                    <span>
+                        📦
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            0
+                        </strong>
+
+                        <small>
+                            Total Produk
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stock-item">
+
+                    <span>
+                        ⚠️
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            0
+                        </strong>
+
+                        <small>
+                            Stok Menipis
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stock-item">
+
+                    <span>
+                        ❌
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            0
+                        </strong>
+
+                        <small>
+                            Stok Habis
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stock-item">
+
+                    <span>
+                        💰
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Rp 0
+                        </strong>
+
+                        <small>
+                            Nilai Persediaan
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- REMINDER -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h3>
+                        Pengingat
+                    </h3>
+
+                    <p>
+                        Hal-hal yang perlu diperhatikan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="reminders">
+
+                <div class="reminder">
+
+                    <span>
+                        📦
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Stok Menipis
+                        </strong>
+
+                        <small>
+                            Periksa produk dengan stok rendah.
+                        </small>
+
+                    </div>
+
+                    <b>
+                        0
+                    </b>
+
+                </div>
+
+
+                <div class="reminder">
+
+                    <span>
+                        📋
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Piutang
+                        </strong>
+
+                        <small>
+                            Periksa pelanggan yang belum membayar.
+                        </small>
+
+                    </div>
+
+                    <b>
+                        Rp 0
+                    </b>
+
+                </div>
+
+
+                <div class="reminder">
+
+                    <span>
+                        💳
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Hutang
+                        </strong>
+
+                        <small>
+                            Periksa hutang kepada supplier.
+                        </small>
+
+                    </div>
+
+                    <b>
+                        Rp 0
+                    </b>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+```
+
+</div>
+
+<script>
+
+function toggleSubmenu(submenuId, arrowId) {
+
+    const submenu =
+        document.getElementById(submenuId);
+
+    const arrow =
+        document.getElementById(arrowId);
+
+    if (!submenu) {
+        return;
+    }
+
+    submenu.classList.toggle("show");
+
+    if (arrow) {
+        arrow.classList.toggle("open");
+    }
+
+}
+
+</script>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

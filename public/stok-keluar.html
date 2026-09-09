@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stok Keluar - AN-NAFIQ BENGKEL</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="stok-keluar.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🔧
+            </div>
+
+            <div>
+                <h2>AN-NAFIQ</h2>
+                <span>BENGKEL</span>
+            </div>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="/dashboard.html" class="menu-item">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>🛒</span>
+                Kasir
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>🔧</span>
+                Servis
+            </a>
+
+
+            <!-- =========================
+                 PRODUK & STOK
+            ========================== -->
+
+            <a href="/stok.html" class="menu-item active">
+                <span>📦</span>
+                Produk & Stok
+            </a>
+
+
+            <div class="submenu">
+
+                <a href="/stok.html" class="submenu-item">
+                    <span>📦</span>
+                    Data Produk
+                </a>
+
+
+                <a href="/stok-masuk.html" class="submenu-item">
+                    <span>📥</span>
+                    Stok Masuk
+                </a>
+
+
+                <a href="/stok-keluar.html" class="submenu-item active">
+                    <span>📤</span>
+                    Stok Keluar
+                </a>
+
+
+                <a href="/kartu-stok.html" class="submenu-item">
+                    <span>📋</span>
+                    Kartu Stok
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 PEMBELIAN
+            ========================== -->
+
+            <a href="/pembelian.html" class="menu-item">
+                <span>🚚</span>
+                Pembelian
+            </a>
+
+
+            <div class="submenu">
+
+                <a href="/pembelian.html" class="submenu-item">
+                    <span>🛒</span>
+                    Pembelian Baru
+                </a>
+
+
+                <a href="/supplier.html" class="submenu-item">
+                    <span>🏭</span>
+                    Supplier
+                </a>
+
+
+                <a href="/pembelian.html#riwayat" class="submenu-item">
+                    <span>📋</span>
+                    Riwayat Pembelian
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 MENU LAIN
+            ========================== -->
+
+            <a href="#" class="menu-item">
+                <span>💰</span>
+                Penjualan
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>👥</span>
+                Pelanggan
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>📋</span>
+                Piutang
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>💳</span>
+                Hutang
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>💵</span>
+                Kas & Keuangan
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>🪙</span>
+                Pembagian Uang
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>👨‍🔧</span>
+                Mekanik
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>📈</span>
+                Laporan
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span>⚙️</span>
+                Pengaturan
+            </a>
+
+        </nav>
+
+
+        <button
+            type="button"
+            class="logout-button"
+            onclick="logout()"
+        >
+            🚪 Keluar
+        </button>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Stok Keluar
+                </h1>
+
+                <p>
+                    Kurangi dan catat stok produk
+                </p>
+
+            </div>
+
+
+            <div class="user-box">
+
+                <div class="user-icon">
+                    👤
+                </div>
+
+                <div>
+
+                    <strong id="userName">
+                        Memuat...
+                    </strong>
+
+                    <small id="userRole">
+                        ...
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             CONTENT
+        ========================== -->
+
+        <div class="content">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>
+                        📤 Tambah Stok Keluar
+                    </h2>
+
+                    <p>
+                        Masukkan produk dan jumlah stok yang dikeluarkan
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 FORM STOK KELUAR
+            ========================== -->
+
+            <section class="table-panel">
+
+                <div class="table-header">
+
+                    <div>
+
+                        <h3>
+                            Form Stok Keluar
+                        </h3>
+
+                        <p>
+                            Gunakan untuk pemakaian, kerusakan,
+                            koreksi, servis, atau kebutuhan lainnya.
+                        </p>
+
+                    </div>
+
+
+                    <span>
+                        STOK KELUAR
+                    </span>
+
+                </div>
+
+
+                <form id="stockOutForm">
+
+                    <div class="form-grid">
+
+
+                        <!-- PRODUK -->
+
+                        <div class="form-group">
+
+                            <label for="stockOutProduct">
+                                Produk <span>*</span>
+                            </label>
+
+                            <select
+                                id="stockOutProduct"
+                                required
+                            >
+
+                                <option value="">
+                                    -- Pilih Produk --
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- STOK SAAT INI -->
+
+                        <div class="form-group">
+
+                            <label for="currentStock">
+                                Stok Saat Ini
+                            </label>
+
+                            <input
+                                type="text"
+                                id="currentStock"
+                                value="-"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <!-- JUMLAH -->
+
+                        <div class="form-group">
+
+                            <label for="stockOutQuantity">
+                                Jumlah Keluar <span>*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="stockOutQuantity"
+                                min="0.01"
+                                step="0.01"
+                                placeholder="Masukkan jumlah"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- TANGGAL -->
+
+                        <div class="form-group">
+
+                            <label for="stockOutDate">
+                                Tanggal <span>*</span>
+                            </label>
+
+                            <input
+                                type="date"
+                                id="stockOutDate"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- ALASAN -->
+
+                        <div class="form-group">
+
+                            <label for="stockOutReason">
+                                Alasan
+                            </label>
+
+                            <select id="stockOutReason">
+
+                                <option value="Pemakaian">
+                                    Pemakaian
+                                </option>
+
+                                <option value="Kerusakan">
+                                    Kerusakan
+                                </option>
+
+                                <option value="Koreksi Stok">
+                                    Koreksi Stok
+                                </option>
+
+                                <option value="Servis">
+                                    Servis
+                                </option>
+
+                                <option value="Lainnya">
+                                    Lainnya
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- CATATAN -->
+
+                        <div class="form-group">
+
+                            <label for="stockOutNotes">
+                                Catatan
+                            </label>
+
+                            <input
+                                type="text"
+                                id="stockOutNotes"
+                                placeholder="Catatan tambahan..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTION -->
+
+                    <div class="modal-footer">
+
+                        <button
+                            type="reset"
+                            class="secondary-button"
+                        >
+                            Reset
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                        >
+                            📤 Simpan Stok Keluar
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- =========================
+                 RIWAYAT STOK KELUAR
+            ========================== -->
+
+            <section class="table-panel history-panel">
+
+                <div class="table-header">
+
+                    <div>
+
+                        <h3>
+                            📋 Riwayat Stok Keluar
+                        </h3>
+
+                        <p>
+                            Daftar transaksi stok keluar terbaru
+                        </p>
+
+                    </div>
+
+
+                    <span>
+                        Stok Keluar
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Produk
+                                </th>
+
+                                <th>
+                                    Jumlah
+                                </th>
+
+                                <th>
+                                    HPP
+                                </th>
+
+                                <th>
+                                    Total HPP
+                                </th>
+
+                                <th>
+                                    Stok Setelah
+                                </th>
+
+                                <th>
+                                    Catatan
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="stockOutTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="8"
+                                    class="empty-table"
+                                >
+
+                                    <div>
+                                        📤
+                                    </div>
+
+                                    <strong>
+                                        Belum ada transaksi stok keluar
+                                    </strong>
+
+                                    <p>
+                                        Transaksi stok keluar akan muncul di sini.
+                                    </p>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script src="stok-keluar.js"></script>
+
+</body>
+
+</html>

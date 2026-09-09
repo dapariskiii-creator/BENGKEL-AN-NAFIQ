@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk & Stok - AN-NAFIQ BENGKEL</title>
+
+    <link rel="stylesheet" href="stok.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ========================= SIDEBAR ========================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">🔧</div>
+
+            <div class="brand-text">
+                <h2>AN-NAFIQ</h2>
+                <span>BENGKEL</span>
+            </div>
+        </div>
+
+
+        <nav class="menu">
+
+            <!-- DASHBOARD -->
+            <a href="/dashboard.html" class="menu-item">
+                <span class="menu-icon">📊</span>
+                <span class="menu-text">Dashboard</span>
+            </a>
+
+
+            <!-- KASIR -->
+            <a href="#" class="menu-item">
+                <span class="menu-icon">🛒</span>
+                <span class="menu-text">Kasir</span>
+            </a>
+
+
+            <!-- SERVIS -->
+            <a href="#" class="menu-item">
+                <span class="menu-icon">🔧</span>
+                <span class="menu-text">Servis</span>
+            </a>
+
+
+            <!-- =================================================
+                 PRODUK & STOK
+            ================================================== -->
+
+            <button
+                type="button"
+                class="menu-item menu-toggle"
+                id="menuProdukStok"
+                onclick="toggleSubmenu('produkStokSubmenu', 'produkStokArrow')"
+            >
+
+                <span class="menu-icon">📦</span>
+
+                <span class="menu-text">
+                    Produk & Stok
+                </span>
+
+                <span
+                    class="submenu-arrow"
+                    id="produkStokArrow"
+                >
+                    ▾
+                </span>
+
+            </button>
+
+
+            <div
+                class="submenu"
+                id="produkStokSubmenu"
+            >
+
+                <a
+                    href="/stok.html"
+                    class="submenu-item active"
+                >
+                    <span>📦</span>
+                    <span>Data Produk</span>
+                </a>
+
+
+                <a
+                    href="/stok-masuk.html"
+                    class="submenu-item"
+                >
+                    <span>📥</span>
+                    <span>Stok Masuk</span>
+                </a>
+
+
+                <a
+                    href="/stok-keluar.html"
+                    class="submenu-item"
+                >
+                    <span>📤</span>
+                    <span>Stok Keluar</span>
+                </a>
+
+
+                <a
+                    href="/kartu-stok.html"
+                    class="submenu-item"
+                >
+                    <span>📋</span>
+                    <span>Kartu Stok</span>
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+                 PEMBELIAN
+            ================================================== -->
+
+            <button
+                type="button"
+                class="menu-item menu-toggle"
+                id="menuPembelian"
+                onclick="toggleSubmenu('pembelianSubmenu', 'pembelianArrow')"
+            >
+
+                <span class="menu-icon">🚚</span>
+
+                <span class="menu-text">
+                    Pembelian
+                </span>
+
+                <span
+                    class="submenu-arrow"
+                    id="pembelianArrow"
+                >
+                    ▾
+                </span>
+
+            </button>
+
+
+            <div
+                class="submenu"
+                id="pembelianSubmenu"
+            >
+
+                <a
+                    href="/pembelian.html"
+                    class="submenu-item"
+                >
+                    <span>🛒</span>
+                    <span>Pembelian Baru</span>
+                </a>
+
+
+                <a
+                    href="/supplier.html"
+                    class="submenu-item"
+                >
+                    <span>🏭</span>
+                    <span>Supplier</span>
+                </a>
+
+
+                <a
+                    href="/pembelian.html#riwayat"
+                    class="submenu-item"
+                >
+                    <span>📋</span>
+                    <span>Riwayat Pembelian</span>
+                </a>
+
+            </div>
+
+
+            <!-- PENJUALAN -->
+            <a href="#" class="menu-item">
+                <span class="menu-icon">💰</span>
+                <span class="menu-text">Penjualan</span>
+            </a>
+
+
+            <!-- PELANGGAN -->
+            <a href="#" class="menu-item">
+                <span class="menu-icon">👥</span>
+                <span class="menu-text">Pelanggan</span>
+            </a>
+
+
+            <!-- PIUTANG -->
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📋</span>
+                <span class="menu-text">Piutang</span>
+            </a>
+
+
+            <!-- HUTANG -->
+            <a href="#" class="menu-item">
+                <span class="menu-icon">💳</span>
+                <span class="menu-text">Hutang</span>
+            </a>
+
+
+            <!-- KAS -->
+            <a href="#" class="menu-item">
+                <span class="menu-icon">💵</span>
+                <span class="menu-text">Kas & Keuangan</span>
+            </a>
+
+
+            <!-- PEMBAGIAN UANG -->
+            <a href="#" class="menu-item">
+                <span class="menu-icon">🪙</span>
+                <span class="menu-text">Pembagian Uang</span>
+            </a>
+
+
+            <!-- MEKANIK -->
+            <a href="#" class="menu-item">
+                <span class="menu-icon">👨‍🔧</span>
+                <span class="menu-text">Mekanik</span>
+            </a>
+
+
+            <!-- LAPORAN -->
+            <a href="#" class="menu-item">
+                <span class="menu-icon">📈</span>
+                <span class="menu-text">Laporan</span>
+            </a>
+
+
+            <!-- PENGATURAN -->
+            <a href="#" class="menu-item">
+                <span class="menu-icon">⚙️</span>
+                <span class="menu-text">Pengaturan</span>
+            </a>
+
+        </nav>
+
+
+        <!-- LOGOUT -->
+
+        <button
+            type="button"
+            class="logout-button"
+            onclick="logout()"
+        >
+            🚪 Keluar
+        </button>
+
+    </aside>
+
+
+    <!-- ========================= MAIN ========================= -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="topbar-title">
+
+                <h1>
+                    Produk & Stok
+                </h1>
+
+                <p>
+                    Kelola data produk dan persediaan bengkel
+                </p>
+
+            </div>
+
+
+            <div class="user-box">
+
+                <div class="user-icon">
+                    👤
+                </div>
+
+                <div class="user-info">
+
+                    <strong id="userName">
+                        -
+                    </strong>
+
+                    <small id="userRole">
+                        -
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>
+                        📦 Data Produk
+                    </h2>
+
+                    <p>
+                        Kelola produk, harga, stok dan informasi persediaan
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 STATISTIK
+            ========================== -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📦
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Total Produk
+                        </span>
+
+                        <strong id="totalProducts">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📊
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Total Stok
+                        </span>
+
+                        <strong id="totalStock">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⚠️
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Stok Menipis
+                        </span>
+
+                        <strong id="lowStock">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        💰
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Nilai Persediaan
+                        </span>
+
+                        <strong id="stockValue">
+                            Rp 0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 DATA PRODUK
+            ========================== -->
+
+            <section class="table-panel">
+
+
+                <div class="table-header">
+
+                    <div>
+
+                        <h3>
+                            📦 Daftar Produk
+                        </h3>
+
+                        <p>
+                            Semua produk yang tersedia di bengkel
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        onclick="openProductModal()"
+                    >
+                        ➕ Tambah Produk
+                    </button>
+
+                </div>
+
+
+                <!-- FILTER -->
+
+                <div class="filter-bar">
+
+                    <input
+                        type="text"
+                        id="searchProduct"
+                        placeholder="🔎 Cari kode, nama atau barcode..."
+                    >
+
+
+                    <select id="filterCategory">
+
+                        <option value="">
+                            Semua Kategori
+                        </option>
+
+                    </select>
+
+
+                    <select id="filterStock">
+
+                        <option value="">
+                            Semua Stok
+                        </option>
+
+                        <option value="available">
+                            Stok Tersedia
+                        </option>
+
+                        <option value="low">
+                            Stok Menipis
+                        </option>
+
+                        <option value="empty">
+                            Stok Habis
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- TABLE -->
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Produk</th>
+                                <th>Kategori</th>
+                                <th>Satuan</th>
+                                <th>Harga Beli</th>
+                                <th>Harga Jual</th>
+                                <th>Stok</th>
+                                <th>Minimum</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="productTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="11"
+                                    class="empty-table"
+                                >
+
+                                    <div class="empty-icon">
+                                        📦
+                                    </div>
+
+                                    <strong>
+                                        Belum ada produk
+                                    </strong>
+
+                                    <p>
+                                        Tambahkan produk untuk mulai mengelola stok bengkel.
+                                    </p>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL PRODUK
+========================================================= -->
+
+<div
+    id="productModal"
+    class="modal-overlay"
+>
+
+    <div class="modal-box">
+
+
+        <!-- MODAL HEADER -->
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="modalTitle">
+                    ➕ Tambah Produk
+                </h3>
+
+                <p>
+                    Masukkan informasi produk
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                onclick="closeProductModal()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form
+            id="productForm"
+            class="product-form"
+        >
+
+            <input
+                type="hidden"
+                id="productId"
+            >
+
+
+            <div class="form-grid">
+
+
+                <!-- KODE -->
+
+                <div class="form-group">
+
+                    <label for="productCode">
+                        Kode Produk
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productCode"
+                        placeholder="Contoh: OLI001"
+                    >
+
+                </div>
+
+
+                <!-- BARCODE -->
+
+                <div class="form-group">
+
+                    <label for="productBarcode">
+                        Barcode
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productBarcode"
+                        placeholder="Barcode produk"
+                    >
+
+                </div>
+
+
+                <!-- NAMA -->
+
+                <div class="form-group">
+
+                    <label for="productName">
+                        Nama Produk
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="Nama produk"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- KATEGORI -->
+
+                <div class="form-group">
+
+                    <label for="productCategory">
+                        Kategori
+                    </label>
+
+                    <select id="productCategory">
+
+                        <option value="">
+                            -- Pilih Kategori --
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SATUAN -->
+
+                <div class="form-group">
+
+                    <label for="productUnit">
+                        Satuan
+                    </label>
+
+                    <select id="productUnit">
+
+                        <option value="">
+                            -- Pilih Satuan --
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MEREK -->
+
+                <div class="form-group">
+
+                    <label for="productBrand">
+                        Merek
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productBrand"
+                        placeholder="Merek produk"
+                    >
+
+                </div>
+
+
+                <!-- HARGA BELI -->
+
+                <div class="form-group">
+
+                    <label for="productBuyPrice">
+                        Harga Beli
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productBuyPrice"
+                        min="0"
+                        step="0.01"
+                        placeholder="0"
+                    >
+
+                </div>
+
+
+                <!-- HARGA JUAL -->
+
+                <div class="form-group">
+
+                    <label for="productSellPrice">
+                        Harga Jual
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productSellPrice"
+                        min="0"
+                        step="0.01"
+                        placeholder="0"
+                    >
+
+                </div>
+
+
+                <!-- STOK -->
+
+                <div class="form-group">
+
+                    <label for="productStock">
+                        Stok Awal
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productStock"
+                        min="0"
+                        step="0.01"
+                        value="0"
+                        placeholder="0"
+                    >
+
+                </div>
+
+
+                <!-- MINIMUM -->
+
+                <div class="form-group">
+
+                    <label for="productMinimumStock">
+                        Minimum Stok
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productMinimumStock"
+                        min="0"
+                        step="0.01"
+                        value="0"
+                        placeholder="0"
+                    >
+
+                </div>
+
+
+                <!-- LOKASI -->
+
+                <div class="form-group">
+
+                    <label for="productLocation">
+                        Lokasi
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productLocation"
+                        placeholder="Contoh: Rak A1"
+                    >
+
+                </div>
+
+
+                <!-- SUPPLIER -->
+
+                <div class="form-group">
+
+                    <label for="productSupplier">
+                        Supplier
+                    </label>
+
+                    <select id="productSupplier">
+
+                        <option value="">
+                            -- Pilih Supplier --
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    onclick="closeProductModal()"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    💾 Simpan Produk
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     STOK JS
+========================================================= -->
+
+<script src="stok.js"></script>
+
+
+<script>
+
+/* =========================================================
+   SIDEBAR SUBMENU
+========================================================= */
+
+function toggleSubmenu(submenuId, arrowId) {
+
+    const submenu =
+        document.getElementById(submenuId);
+
+    const arrow =
+        document.getElementById(arrowId);
+
+    if (!submenu) return;
+
+
+    const isCurrentlyOpen =
+        submenu.classList.contains("show");
+
+
+    /*
+     * Tutup semua submenu terlebih dahulu.
+     * Jadi hanya satu submenu yang terbuka.
+     */
+
+    document
+        .querySelectorAll(".submenu")
+        .forEach(function(item) {
+
+            item.classList.remove("show");
+
+        });
+
+
+    document
+        .querySelectorAll(".submenu-arrow")
+        .forEach(function(item) {
+
+            item.classList.remove("open");
+
+        });
+
+
+    /*
+     * Kalau tadi tertutup,
+     * sekarang buka.
+     *
+     * Kalau tadi terbuka,
+     * tetap tertutup.
+     */
+
+    if (!isCurrentlyOpen) {
+
+        submenu.classList.add("show");
+
+        if (arrow) {
+
+            arrow.classList.add("open");
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD USER
+========================================================= */
+
+async function loadUser() {
+
+    try {
+
+        const response =
+            await fetch("/api/me", {
+                credentials: "include"
+            });
+
+
+        if (response.status === 401) {
+
+            window.location.href =
+                "/index.html";
+
+            return;
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.success &&
+            result.user
+        ) {
+
+            const userName =
+                document.getElementById("userName");
+
+
+            const userRole =
+                document.getElementById("userRole");
+
+
+            if (userName) {
+
+                userName.textContent =
+                    result.user.full_name ||
+                    result.user.username ||
+                    "-";
+
+            }
+
+
+            if (userRole) {
+
+                userRole.textContent =
+                    result.user.role ||
+                    "-";
+
+            }
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "LOAD USER ERROR:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logout() {
+
+    try {
+
+        await fetch(
+            "/api/logout",
+            {
+                method: "POST",
+                credentials: "include"
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "LOGOUT ERROR:",
+            error
+        );
+
+    }
+
+
+    window.location.href =
+        "/index.html";
+
+}
+
+
+/* =========================================================
+   OPEN MODAL
+========================================================= */
+
+function openProductModal() {
+
+    const modal =
+        document.getElementById("productModal");
+
+    if (!modal) return;
+
+    modal.style.display = "flex";
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeProductModal() {
+
+    const modal =
+        document.getElementById("productModal");
+
+    if (!modal) return;
+
+    modal.style.display = "none";
+
+}
+
+
+/* =========================================================
+   CLICK OUTSIDE MODAL
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const modal =
+            document.getElementById("productModal");
+
+
+        if (
+            modal &&
+            event.target === modal
+        ) {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ESCAPE UNTUK TUTUP MODAL
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   PAGE READY
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadUser();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

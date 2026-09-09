@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pembagian Uang - AN-NAFIQ BENGKEL</title>
+
+    <link rel="stylesheet" href="pembagian-uang.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">🔧</div>
+
+            <div>
+                <h2>AN-NAFIQ</h2>
+                <span>BENGKEL</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+
+            <a href="dashboard.html">📊 Dashboard</a>
+
+            <a href="kasir.html">🛒 Kasir</a>
+
+            <a href="servis.html">🔧 Servis</a>
+
+            <div class="menu-group">
+                <button class="menu-toggle">
+                    📦 Produk & Stok
+                    <span>›</span>
+                </button>
+
+                <div class="submenu">
+                    <a href="stok.html">Stok Produk</a>
+                    <a href="stok-masuk.html">Stok Masuk</a>
+                    <a href="stok-keluar.html">Stok Keluar</a>
+                    <a href="kartu-stok.html">Kartu Stok</a>
+                </div>
+            </div>
+
+            <div class="menu-group">
+                <button class="menu-toggle">
+                    🛍️ Pembelian
+                    <span>›</span>
+                </button>
+
+                <div class="submenu">
+                    <a href="pembelian.html">Pembelian Baru</a>
+                    <a href="supplier.html">Supplier</a>
+                    <a href="pembelian.html#riwayat">Riwayat Pembelian</a>
+                </div>
+            </div>
+
+            <a href="penjualan.html">💰 Penjualan</a>
+
+            <a href="pelanggan.html">👥 Pelanggan</a>
+
+            <a href="piutang.html">📋 Piutang</a>
+
+            <a href="hutang.html">🧾 Hutang</a>
+
+            <a href="keuangan.html">💵 Kas & Keuangan</a>
+
+            <a href="pembagian-uang.html" class="active">
+                💸 Pembagian Uang
+            </a>
+
+            <a href="mekanik.html">👨‍🔧 Mekanik</a>
+
+            <a href="laporan.html">📈 Laporan</a>
+
+            <a href="pengaturan.html">⚙️ Pengaturan</a>
+
+            <button id="logoutBtn" class="logout">
+                🚪 Logout
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <h1>Pembagian Uang</h1>
+
+                <p>
+                    Kelola pembagian dan pengambilan uang dari kas bengkel.
+                </p>
+            </div>
+
+            <div class="user-info">
+
+                <div class="user-icon">
+                    👤
+                </div>
+
+                <div>
+                    <strong id="ownerName">
+                        Owner AN-NAFIQ BENGKEL
+                    </strong>
+
+                    <span id="ownerRole">
+                        Administrator
+                    </span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+
+            <!-- STATS -->
+            <div class="stats-grid">
+
+                <div class="stat-card blue">
+
+                    <div class="stat-icon">
+                        💰
+                    </div>
+
+                    <div>
+                        <span>Saldo Kas</span>
+
+                        <strong id="saldoKas">
+                            Rp 0
+                        </strong>
+
+                        <small>
+                            Saldo kas saat ini
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card red">
+
+                    <div class="stat-icon">
+                        💸
+                    </div>
+
+                    <div>
+                        <span>Pembagian Hari Ini</span>
+
+                        <strong id="pembagianHariIni">
+                            Rp 0
+                        </strong>
+
+                        <small>
+                            Total uang dibagikan
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card green">
+
+                    <div class="stat-icon">
+                        📊
+                    </div>
+
+                    <div>
+                        <span>Total Pembagian</span>
+
+                        <strong id="totalPembagian">
+                            Rp 0
+                        </strong>
+
+                        <small>
+                            Semua periode
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card purple">
+
+                    <div class="stat-icon">
+                        🧾
+                    </div>
+
+                    <div>
+                        <span>Jumlah Transaksi</span>
+
+                        <strong id="jumlahTransaksi">
+                            0
+                        </strong>
+
+                        <small>
+                            Riwayat pembagian
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIWAYAT -->
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="section-label">
+                            KEUANGAN
+                        </span>
+
+                        <h2>
+                            Riwayat Pembagian Uang
+                        </h2>
+
+                        <p>
+                            Semua pembagian uang dari kas bengkel tercatat di sini.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="btnTambahPembagian"
+                        class="btn-primary"
+                    >
+                        ＋ Tambah Pembagian
+                    </button>
+
+                </div>
+
+
+                <!-- FILTER -->
+                <div class="filters">
+
+                    <div class="filter-item">
+
+                        <label for="startDate">
+                            Dari Tanggal
+                        </label>
+
+                        <input
+                            type="date"
+                            id="startDate"
+                        >
+
+                    </div>
+
+
+                    <div class="filter-item">
+
+                        <label for="endDate">
+                            Sampai Tanggal
+                        </label>
+
+                        <input
+                            type="date"
+                            id="endDate"
+                        >
+
+                    </div>
+
+
+                    <div class="filter-item">
+
+                        <label for="categoryFilter">
+                            Kategori
+                        </label>
+
+                        <select id="categoryFilter">
+
+                            <option value="">
+                                Semua Kategori
+                            </option>
+
+                            <option value="GAJI">
+                                Gaji
+                            </option>
+
+                            <option value="PEMILIK">
+                                Pemilik
+                            </option>
+
+                            <option value="OPERASIONAL">
+                                Operasional
+                            </option>
+
+                            <option value="LAINNYA">
+                                Lainnya
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-item">
+
+                        <label for="searchInput">
+                            Cari
+                        </label>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Cari penerima..."
+                        >
+
+                    </div>
+
+
+                    <div class="filter-actions">
+
+                        <button
+                            type="button"
+                            id="btnFilter"
+                            class="btn-filter"
+                        >
+                            🔍 Filter
+                        </button>
+
+                        <button
+                            type="button"
+                            id="btnReset"
+                            class="btn-reset"
+                        >
+                            Reset
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Nomor</th>
+                                <th>Penerima</th>
+                                <th>Kategori</th>
+                                <th>Metode</th>
+                                <th>Keterangan</th>
+                                <th>Jumlah</th>
+                                <th>Aksi</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="distributionTableBody">
+
+                            <tr>
+                                <td colspan="8" class="loading">
+                                    Memuat data...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="table-footer">
+
+                    <span id="tableInfo">
+                        0 transaksi
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL TAMBAH -->
+<div
+    id="distributionModal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <span class="section-label">
+                    TRANSAKSI KAS
+                </span>
+
+                <h2>
+                    Tambah Pembagian Uang
+                </h2>
+            </div>
+
+            <button
+                type="button"
+                id="closeModal"
+                class="close-modal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="distributionForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="distributionDate">
+                        Tanggal
+                    </label>
+
+                    <input
+                        type="date"
+                        id="distributionDate"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="recipient">
+                        Penerima
+                    </label>
+
+                    <input
+                        type="text"
+                        id="recipient"
+                        placeholder="Contoh: Pak Budi"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Kategori
+                    </label>
+
+                    <select id="category" required>
+
+                        <option value="">
+                            Pilih kategori
+                        </option>
+
+                        <option value="GAJI">
+                            Gaji
+                        </option>
+
+                        <option value="PEMILIK">
+                            Pemilik
+                        </option>
+
+                        <option value="OPERASIONAL">
+                            Operasional
+                        </option>
+
+                        <option value="LAINNYA">
+                            Lainnya
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="amount">
+                        Nominal
+                    </label>
+
+                    <input
+                        type="number"
+                        id="amount"
+                        min="1"
+                        step="1"
+                        placeholder="Contoh: 500000"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="paymentMethod">
+                        Metode Pembayaran
+                    </label>
+
+                    <select id="paymentMethod" required>
+
+                        <option value="CASH">
+                            Cash
+                        </option>
+
+                        <option value="TRANSFER">
+                            Transfer
+                        </option>
+
+                        <option value="QRIS">
+                            QRIS
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="description">
+                        Keterangan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="description"
+                        placeholder="Contoh: Pembagian gaji mekanik"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="notes">
+                        Catatan
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        rows="3"
+                        placeholder="Catatan tambahan..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="formError"
+                class="form-error"
+            ></div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelModal"
+                    class="btn-cancel"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    id="saveDistribution"
+                    class="btn-primary"
+                >
+                    Simpan Pembagian
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="pembagian-uang.js"></script>
+
+</body>
+</html>

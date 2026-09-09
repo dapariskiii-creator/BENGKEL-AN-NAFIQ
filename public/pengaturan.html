@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pengaturan - AN-NAFIQ BENGKEL</title>
+
+    <link rel="stylesheet" href="pengaturan.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">🔧</div>
+
+            <div>
+                <h2>AN-NAFIQ</h2>
+                <span>BENGKEL</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+
+            <a href="dashboard.html" class="menu-item">
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="kasir.html" class="menu-item">
+                <span>🛒</span>
+                <span>Kasir</span>
+            </a>
+
+            <a href="servis.html" class="menu-item">
+                <span>🔧</span>
+                <span>Servis</span>
+            </a>
+
+            <a href="produk.html" class="menu-item">
+                <span>📦</span>
+                <span>Produk</span>
+            </a>
+
+            <a href="pembelian.html" class="menu-item">
+                <span>🛍️</span>
+                <span>Pembelian</span>
+            </a>
+
+            <a href="penjualan.html" class="menu-item">
+                <span>💰</span>
+                <span>Penjualan</span>
+            </a>
+
+            <a href="pelanggan.html" class="menu-item">
+                <span>👥</span>
+                <span>Pelanggan</span>
+            </a>
+
+            <a href="piutang.html" class="menu-item">
+                <span>📋</span>
+                <span>Piutang</span>
+            </a>
+
+            <a href="hutang.html" class="menu-item">
+                <span>💳</span>
+                <span>Hutang</span>
+            </a>
+
+            <a href="kas.html" class="menu-item">
+                <span>💵</span>
+                <span>Kas</span>
+            </a>
+
+            <a href="pembagian-uang.html" class="menu-item">
+                <span>💸</span>
+                <span>Pembagian Uang</span>
+            </a>
+
+            <a href="mekanik.html" class="menu-item">
+                <span>👨‍🔧</span>
+                <span>Mekanik</span>
+            </a>
+
+            <a href="laporan.html" class="menu-item">
+                <span>📈</span>
+                <span>Laporan</span>
+            </a>
+
+            <a href="pengaturan.html" class="menu-item active">
+                <span>⚙️</span>
+                <span>Pengaturan</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="user-box">
+                <div class="avatar">O</div>
+
+                <div class="user-info">
+                    <strong id="sidebarUsername">AN-NAFIQ BENGKEL</strong>
+                    <small>OWNER</small>
+                </div>
+            </div>
+
+            <button class="logout-btn" id="logoutBtn">
+                🚪 Keluar
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <button class="mobile-menu" id="mobileMenu">
+                ☰
+            </button>
+
+            <div>
+                <h1>⚙️ Pengaturan</h1>
+                <p>Kelola pengaturan AN-NAFIQ BENGKEL</p>
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <!-- PROFIL -->
+            <div class="settings-card">
+
+                <div class="card-header">
+                    <div class="header-icon">🏪</div>
+
+                    <div>
+                        <h2>Profil Bengkel</h2>
+                        <p>Informasi utama bengkel</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Nama Bengkel</label>
+                        <input
+                            type="text"
+                            id="businessName"
+                            placeholder="Nama bengkel"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nomor Telepon</label>
+                        <input
+                            type="text"
+                            id="businessPhone"
+                            placeholder="08xxxxxxxxxx"
+                        >
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Alamat</label>
+                        <textarea
+                            id="businessAddress"
+                            rows="3"
+                            placeholder="Alamat lengkap bengkel"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Deskripsi</label>
+                        <textarea
+                            id="businessDescription"
+                            rows="3"
+                            placeholder="Deskripsi singkat bengkel"
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+                    <button class="save-btn" id="saveProfile">
+                        💾 Simpan Profil
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- AKUN OWNER -->
+            <div class="settings-card">
+
+                <div class="card-header">
+                    <div class="header-icon">👤</div>
+
+                    <div>
+                        <h2>Akun Owner</h2>
+                        <p>Pengaturan akun administrator</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Username Owner</label>
+                        <input
+                            type="text"
+                            id="ownerUsername"
+                            placeholder="Username owner"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Role</label>
+                        <input
+                            type="text"
+                            value="OWNER"
+                            disabled
+                        >
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+                    <button class="save-btn" id="saveAccount">
+                        💾 Simpan Akun
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- NOTA -->
+            <div class="settings-card">
+
+                <div class="card-header">
+                    <div class="header-icon">🧾</div>
+
+                    <div>
+                        <h2>Pengaturan Nota</h2>
+                        <p>Informasi yang ditampilkan pada nota</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Judul Nota</label>
+                        <input
+                            type="text"
+                            id="receiptTitle"
+                            placeholder="AN-NAFIQ BENGKEL"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Footer Nota</label>
+                        <input
+                            type="text"
+                            id="receiptFooter"
+                            placeholder="Terima kasih telah berkunjung"
+                        >
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Catatan Nota</label>
+                        <textarea
+                            id="receiptNote"
+                            rows="3"
+                            placeholder="Catatan tambahan pada nota"
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+                    <button class="save-btn" id="saveReceipt">
+                        💾 Simpan Nota
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- PEMBAYARAN -->
+            <div class="settings-card">
+
+                <div class="card-header">
+                    <div class="header-icon">💰</div>
+
+                    <div>
+                        <h2>Metode Pembayaran</h2>
+                        <p>Metode pembayaran yang tersedia</p>
+                    </div>
+                </div>
+
+                <div class="payment-list">
+
+                    <label class="check-item">
+                        <input
+                            type="checkbox"
+                            id="paymentCash"
+                            checked
+                        >
+                        <span>💵 Cash / Tunai</span>
+                    </label>
+
+                    <label class="check-item">
+                        <input
+                            type="checkbox"
+                            id="paymentTransfer"
+                        >
+                        <span>🏦 Transfer</span>
+                    </label>
+
+                    <label class="check-item">
+                        <input
+                            type="checkbox"
+                            id="paymentQris"
+                        >
+                        <span>📱 QRIS</span>
+                    </label>
+
+                    <label class="check-item">
+                        <input
+                            type="checkbox"
+                            id="paymentDebit"
+                        >
+                        <span>💳 Debit</span>
+                    </label>
+
+                    <label class="check-item">
+                        <input
+                            type="checkbox"
+                            id="paymentCredit"
+                        >
+                        <span>📝 Kredit / Hutang</span>
+                    </label>
+
+                </div>
+
+                <div class="card-footer">
+                    <button class="save-btn" id="savePayment">
+                        💾 Simpan Pembayaran
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- SERVIS -->
+            <div class="settings-card">
+
+                <div class="card-header">
+                    <div class="header-icon">🔧</div>
+
+                    <div>
+                        <h2>Pengaturan Servis</h2>
+                        <p>Atur tarif jasa servis default</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Tarif Jasa Servis Default</label>
+
+                        <div class="money-input">
+                            <span>Rp</span>
+
+                            <input
+                                type="number"
+                                id="defaultServicePrice"
+                                min="0"
+                                step="1000"
+                                placeholder="40000"
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="info-box">
+                    ℹ️ Tarif ini akan digunakan sebagai harga awal ketika
+                    memilih <strong>Jasa Servis</strong> pada transaksi servis.
+                </div>
+
+                <div class="card-footer">
+                    <button class="save-btn" id="saveService">
+                        💾 Simpan Servis
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- KEAMANAN -->
+            <div class="settings-card">
+
+                <div class="card-header">
+                    <div class="header-icon">🔐</div>
+
+                    <div>
+                        <h2>Keamanan</h2>
+                        <p>Ubah password akun owner</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Password Lama</label>
+
+                        <input
+                            type="password"
+                            id="oldPassword"
+                            placeholder="Masukkan password lama"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password Baru</label>
+
+                        <input
+                            type="password"
+                            id="newPassword"
+                            placeholder="Masukkan password baru"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Konfirmasi Password</label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Ulangi password baru"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+                    <button class="save-btn danger-btn" id="changePassword">
+                        🔐 Ubah Password
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- RESET -->
+            <div class="settings-card danger-card">
+
+                <div class="card-header">
+                    <div class="header-icon">⚠️</div>
+
+                    <div>
+                        <h2>Data Lokal</h2>
+                        <p>Pengaturan penyimpanan browser</p>
+                    </div>
+                </div>
+
+                <p class="danger-text">
+                    Tombol ini hanya menghapus pengaturan sementara yang
+                    tersimpan di browser ini. Data Neon PostgreSQL tidak akan
+                    ikut terhapus.
+                </p>
+
+                <div class="card-footer">
+                    <button class="reset-btn" id="resetLocal">
+                        🗑️ Reset Pengaturan Lokal
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- TOAST -->
+    <div id="toast" class="toast">
+        <span id="toastIcon">✅</span>
+        <span id="toastMessage">Berhasil</span>
+    </div>
+
+
+    <script src="pengaturan.js"></script>
+
+</body>
+</html>
