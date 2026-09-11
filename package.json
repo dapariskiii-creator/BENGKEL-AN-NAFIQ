@@ -1,10 +1,10 @@
 {
   "name": "bengkel-an-nafiq",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Sistem manajemen AN-NAFIQ BENGKEL",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
