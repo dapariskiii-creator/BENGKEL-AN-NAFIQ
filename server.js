@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
+const pgSession = require("connect-pg-simple")(session);
 require("dotenv").config();
 
 const db = require("./config/db");
@@ -11,24 +12,35 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ========================================
-// MIDDLEWARE
+// SESSION UNTUK VERCEL + NEON
 // ========================================
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.set("trust proxy", 1);
 
 app.use(
     session({
+        store: new pgSession({
+            pool: db,
+            tableName: "user_sessions",
+            createTableIfMissing: true
+        }),
+
         secret: process.env.SESSION_SECRET || "an-nafiq-secret",
+
         resave: false,
+
         saveUninitialized: false,
+
+        rolling: true,
+
         cookie: {
-            maxAge: 1000 * 60 * 60 * 8
+            maxAge: 1000 * 60 * 60 * 8,
+            httpOnly: true,
+            secure: true,
+            sameSite: "lax"
         }
     })
 );
-
 // ========================================
 // FRONTEND
 // ========================================
