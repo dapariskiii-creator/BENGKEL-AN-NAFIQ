@@ -4,6 +4,7 @@ const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
 const pgSession = require("connect-pg-simple")(session);
+
 require("dotenv").config();
 
 const db = require("./config/db");
@@ -11,11 +12,11 @@ const db = require("./config/db");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.set("trust proxy", 1);
+
 // ========================================
 // SESSION UNTUK VERCEL + NEON
 // ========================================
-
-app.set("trust proxy", 1);
 
 app.use(
     session({
@@ -25,7 +26,7 @@ app.use(
             createTableIfMissing: true
         }),
 
-        secret: process.env.SESSION_SECRET || "an-nafiq-secret",
+        secret: process.env.SESSION_SECRET || "an-nafiq-secret-super-aman",
 
         resave: false,
 
@@ -34,10 +35,10 @@ app.use(
         rolling: true,
 
         cookie: {
-            maxAge: 1000 * 60 * 60 * 8,
             httpOnly: true,
-            secure: true,
-            sameSite: "lax"
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "lax",
+            maxAge: 1000 * 60 * 60 * 8
         }
     })
 );
@@ -7218,15 +7219,16 @@ app.use("/api", (req, res) => {
 // ========================================
 // SERVER
 // ========================================
+if (process.env.NODE_ENV !== "production") {
+    app.listen(PORT, () => {
+        console.log("========================================");
+        console.log("   AN-NAFIQ BENGKEL");
+        console.log("========================================");
+        console.log(
+            `Server berjalan di http://localhost:${PORT}`
+        );
+        console.log("========================================");
+    });
+}
 
-app.listen(PORT, () => {
-
-    console.log("========================================");
-    console.log("   AN-NAFIQ BENGKEL");
-    console.log("========================================");
-    console.log(
-        `Server berjalan di http://localhost:${PORT}`
-    );
-    console.log("========================================");
-
-});
+module.exports = app;
