@@ -13,6 +13,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.set("trust proxy", 1);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // ========================================
 // MIDDLEWARE
@@ -1260,8 +1262,8 @@ app.post("/api/stock-in", async (req, res) => {
                         ? `Catatan: ${notes}`
                         : ""
                 ]
-                .filter(Boolean)
-                .join(" | "),
+                    .filter(Boolean)
+                    .join(" | "),
 
                 req.session.user.id
             ]
@@ -4469,11 +4471,11 @@ app.post("/api/payables/:id/payment", async (req, res) => {
             id
         ]);
 
-       // =====================================================
-// CATAT KAS KELUAR PEMBAYARAN HUTANG
-// =====================================================
+        // =====================================================
+        // CATAT KAS KELUAR PEMBAYARAN HUTANG
+        // =====================================================
 
-await client.query(`
+        await client.query(`
     INSERT INTO cash_transactions (
         transaction_date,
         transaction_type,
@@ -4495,12 +4497,12 @@ await client.query(`
         $5
     )
 `, [
-    payment_method.toUpperCase(),
-    paymentAmount,
-    `Pembayaran hutang supplier ${payable.payable_number}`,
-    id,
-    req.session.user.id
-]);
+            payment_method.toUpperCase(),
+            paymentAmount,
+            `Pembayaran hutang supplier ${payable.payable_number}`,
+            id,
+            req.session.user.id
+        ]);
 
         await client.query("COMMIT");
 
@@ -5916,24 +5918,24 @@ app.post("/api/service-orders", async (req, res) => {
 
         const serviceTotal =
             total !== undefined &&
-            total !== null &&
-            total !== ""
+                total !== null &&
+                total !== ""
                 ? Number(total) || 0
                 : serviceSubtotal - serviceDiscount;
 
 
         const serviceEstimatedCost =
             estimated_cost !== undefined &&
-            estimated_cost !== null &&
-            estimated_cost !== ""
+                estimated_cost !== null &&
+                estimated_cost !== ""
                 ? Number(estimated_cost) || 0
                 : serviceTotal;
 
 
         const serviceFinalCost =
             final_cost !== undefined &&
-            final_cost !== null &&
-            final_cost !== ""
+                final_cost !== null &&
+                final_cost !== ""
                 ? Number(final_cost) || 0
                 : serviceTotal;
 
@@ -6158,24 +6160,24 @@ app.put("/api/service-orders/:id", async (req, res) => {
 
         const serviceTotal =
             total !== undefined &&
-            total !== null &&
-            total !== ""
+                total !== null &&
+                total !== ""
                 ? Number(total) || 0
                 : serviceSubtotal - serviceDiscount;
 
 
         const serviceEstimatedCost =
             estimated_cost !== undefined &&
-            estimated_cost !== null &&
-            estimated_cost !== ""
+                estimated_cost !== null &&
+                estimated_cost !== ""
                 ? Number(estimated_cost) || 0
                 : serviceTotal;
 
 
         const serviceFinalCost =
             final_cost !== undefined &&
-            final_cost !== null &&
-            final_cost !== ""
+                final_cost !== null &&
+                final_cost !== ""
                 ? Number(final_cost) || 0
                 : serviceTotal;
 
