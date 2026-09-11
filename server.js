@@ -15,6 +15,15 @@ const PORT = process.env.PORT || 3000;
 app.set("trust proxy", 1);
 
 // ========================================
+// MIDDLEWARE
+// ========================================
+
+app.use(cors());
+
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true }));
+
+// ========================================
 // SESSION UNTUK VERCEL + NEON
 // ========================================
 
@@ -42,6 +51,7 @@ app.use(
         }
     })
 );
+
 // ========================================
 // FRONTEND
 // ========================================
@@ -63,7 +73,6 @@ app.get("/api/status", (req, res) => {
         time: new Date().toISOString()
     });
 });
-
 // ========================================
 // DATABASE TEST
 // ========================================
