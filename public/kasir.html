@@ -3,223 +3,513 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Kasir - AN-NAFIQ BENGKEL</title>
+
     <link rel="stylesheet" href="kasir.css">
 </head>
+
 <body>
 
 <div class="app">
 
-    <!-- SIDEBAR -->
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
     <aside class="sidebar" id="sidebar">
 
         <div class="brand">
+
             <div class="brand-logo">AN</div>
+
             <div>
                 <h2>AN-NAFIQ</h2>
                 <span>BENGKEL</span>
             </div>
+
         </div>
+
 
         <nav class="sidebar-menu">
 
-            <a href="/dashboard.html" class="menu-item">
+            <!-- DASHBOARD -->
+
+            <a href="dashboard.html" class="menu-item">
+
                 <span class="icon">▦</span>
+
                 <span>Dashboard</span>
+
             </a>
 
-            <a href="/kasir.html" class="menu-item active">
+
+            <!-- KASIR -->
+
+            <a href="kasir.html" class="menu-item active">
+
                 <span class="icon">🛒</span>
+
                 <span>Kasir</span>
+
             </a>
 
-            <a href="/servis.html" class="menu-item">
+
+            <!-- SERVIS -->
+
+            <a href="servis.html" class="menu-item">
+
                 <span class="icon">🔧</span>
+
                 <span>Servis</span>
+
             </a>
 
-            <!-- PRODUK -->
+
+            <!-- =================================================
+                 PRODUK & STOK
+            ================================================== -->
+
             <div class="menu-group">
-                <div class="menu-item has-submenu" onclick="toggleSubmenu('produkSubmenu', 'produkArrow')">
+
+                <div
+                    class="menu-item has-submenu"
+                    onclick="toggleSubmenu('produkSubmenu', 'produkArrow')"
+                >
+
                     <span class="icon">📦</span>
+
                     <span>Produk & Stok</span>
-                    <span class="arrow" id="produkArrow">›</span>
+
+                    <span
+                        class="arrow"
+                        id="produkArrow"
+                    >›</span>
+
                 </div>
 
-                <div class="submenu" id="produkSubmenu">
-                    <a href="/stok.html">Data Produk</a>
-                    <a href="/stok.html#stok-masuk">Stok Masuk</a>
-                    <a href="/stok.html#stok-keluar">Stok Keluar</a>
-                    <a href="/stok.html#kartu-stok">Kartu Stok</a>
+
+                <div
+                    class="submenu"
+                    id="produkSubmenu"
+                >
+
+                    <a href="stok.html">
+                        Data Produk
+                    </a>
+
+                    <a href="stok.html#stok-masuk">
+                        Stok Masuk
+                    </a>
+
+                    <a href="stok.html#stok-keluar">
+                        Stok Keluar
+                    </a>
+
+                    <a href="stok.html#kartu-stok">
+                        Kartu Stok
+                    </a>
+
                 </div>
+
             </div>
 
-            <!-- PEMBELIAN -->
+
+            <!-- =================================================
+                 PEMBELIAN
+            ================================================== -->
+
             <div class="menu-group">
-                <div class="menu-item has-submenu" onclick="toggleSubmenu('pembelianSubmenu', 'pembelianArrow')">
+
+                <div
+                    class="menu-item has-submenu"
+                    onclick="toggleSubmenu('pembelianSubmenu', 'pembelianArrow')"
+                >
+
                     <span class="icon">🧾</span>
+
                     <span>Pembelian</span>
-                    <span class="arrow" id="pembelianArrow">›</span>
+
+                    <span
+                        class="arrow"
+                        id="pembelianArrow"
+                    >›</span>
+
                 </div>
 
-                <div class="submenu" id="pembelianSubmenu">
-                    <a href="/pembelian.html">Pembelian Baru</a>
-                    <a href="/pembelian.html">Supplier</a>
-                    <a href="/pembelian.html">Riwayat Pembelian</a>
+
+                <div
+                    class="submenu"
+                    id="pembelianSubmenu"
+                >
+
+                    <a href="pembelian.html">
+                        Pembelian Baru
+                    </a>
+
+                    <a href="supplier.html">
+                        Supplier
+                    </a>
+
+                    <a href="pembelian.html#riwayat">
+                        Riwayat Pembelian
+                    </a>
+
                 </div>
+
             </div>
 
-            <a href="#" class="menu-item">
+
+            <!-- PENJUALAN -->
+
+            <a href="penjualan.html" class="menu-item">
+
                 <span class="icon">💰</span>
+
                 <span>Penjualan</span>
+
             </a>
 
-            <a href="#" class="menu-item">
+
+            <!-- PELANGGAN -->
+
+            <a href="pelanggan.html" class="menu-item">
+
                 <span class="icon">👥</span>
+
                 <span>Pelanggan</span>
+
             </a>
 
-            <a href="#" class="menu-item">
+
+            <!-- PIUTANG -->
+
+            <a href="piutang.html" class="menu-item">
+
                 <span class="icon">📋</span>
+
                 <span>Piutang</span>
+
             </a>
 
-            <a href="#" class="menu-item">
+
+            <!-- HUTANG -->
+
+            <a href="hutang.html" class="menu-item">
+
                 <span class="icon">📑</span>
+
                 <span>Hutang</span>
+
             </a>
 
-            <a href="#" class="menu-item">
+
+            <!-- KAS & KEUANGAN -->
+
+            <a href="keuangan.html" class="menu-item">
+
                 <span class="icon">💵</span>
+
                 <span>Kas & Keuangan</span>
+
             </a>
 
-            <a href="#" class="menu-item">
+
+            <!-- PEMBAGIAN UANG -->
+
+            <a href="pembagian-uang.html" class="menu-item">
+
                 <span class="icon">💳</span>
+
                 <span>Pembagian Uang</span>
+
             </a>
 
-            <a href="#" class="menu-item">
+
+            <!-- MEKANIK -->
+
+            <a href="mekanik.html" class="menu-item">
+
                 <span class="icon">👨‍🔧</span>
+
                 <span>Mekanik</span>
+
             </a>
 
-            <a href="#" class="menu-item">
+
+            <!-- LAPORAN -->
+
+            <a href="laporan.html" class="menu-item">
+
                 <span class="icon">📊</span>
+
                 <span>Laporan</span>
+
             </a>
 
-            <a href="#" class="menu-item">
+
+            <!-- PENGATURAN -->
+
+            <a href="pengaturan.html" class="menu-item">
+
                 <span class="icon">⚙️</span>
+
                 <span>Pengaturan</span>
+
             </a>
 
         </nav>
 
+
+        <!-- LOGOUT -->
+
         <div class="sidebar-bottom">
-            <button class="logout-btn" onclick="logout()">
+
+            <button
+                class="logout-btn"
+                onclick="logout()"
+            >
+
                 <span>↪</span>
+
                 Keluar
+
             </button>
+
         </div>
 
     </aside>
 
-    <!-- MAIN -->
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
     <main class="main">
 
+
+        <!-- TOPBAR -->
+
         <header class="topbar">
-            <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+
+            <button
+                class="mobile-menu-btn"
+                onclick="toggleSidebar()"
+            >
+                ☰
+            </button>
+
 
             <div>
+
                 <h1>Kasir</h1>
-                <p>Transaksi penjualan AN-NAFIQ BENGKEL</p>
+
+                <p>
+                    Transaksi penjualan AN-NAFIQ BENGKEL
+                </p>
+
             </div>
+
 
             <div class="top-user">
-                <div class="user-avatar">O</div>
-                <div>
-                    <strong id="userName">Owner</strong>
-                    <small id="userRole">OWNER</small>
+
+                <div class="user-avatar">
+                    O
                 </div>
+
+                <div>
+
+                    <strong id="userName">
+                        Owner
+                    </strong>
+
+                    <small id="userRole">
+                        OWNER
+                    </small>
+
+                </div>
+
             </div>
+
         </header>
 
-        <!-- CONTENT -->
+
+
+        <!-- =====================================================
+             CONTENT
+        ====================================================== -->
+
         <section class="kasir-container">
 
-            <!-- PRODUK -->
+
+            <!-- =================================================
+                 PRODUK
+            ================================================== -->
+
             <div class="products-section">
 
+
                 <div class="section-header">
+
                     <div>
-                        <h2>Daftar Produk</h2>
-                        <p>Pilih produk untuk dimasukkan ke keranjang</p>
+
+                        <h2>
+                            Daftar Produk
+                        </h2>
+
+                        <p>
+                            Pilih produk untuk dimasukkan ke keranjang
+                        </p>
+
                     </div>
 
-                    <button class="refresh-btn" onclick="loadProducts()">
+
+                    <button
+                        class="refresh-btn"
+                        onclick="loadProducts()"
+                    >
                         ↻ Refresh
                     </button>
+
                 </div>
 
+
+
+                <!-- SEARCH -->
+
                 <div class="search-box">
+
                     <span>🔍</span>
+
                     <input
                         type="text"
                         id="searchProduct"
                         placeholder="Cari nama, kode, atau barcode produk..."
                         autocomplete="off"
                     >
+
                 </div>
 
-                <div class="category-filter" id="categoryFilter">
-                    <button class="category-btn active" data-category="all">
+
+
+                <!-- CATEGORY -->
+
+                <div
+                    class="category-filter"
+                    id="categoryFilter"
+                >
+
+                    <button
+                        class="category-btn active"
+                        data-category="all"
+                    >
                         Semua
                     </button>
+
                 </div>
 
-                <div class="products-grid" id="productsGrid">
+
+
+                <!-- PRODUCTS -->
+
+                <div
+                    class="products-grid"
+                    id="productsGrid"
+                >
 
                     <div class="loading">
+
                         <div class="spinner"></div>
-                        <p>Memuat produk...</p>
+
+                        <p>
+                            Memuat produk...
+                        </p>
+
                     </div>
 
                 </div>
 
             </div>
 
-            <!-- CART -->
+
+
+            <!-- =================================================
+                 CART
+            ================================================== -->
+
             <div class="cart-section">
 
+
+                <!-- CART HEADER -->
+
                 <div class="cart-header">
+
                     <div>
-                        <h2>Keranjang</h2>
-                        <span id="cartCount">0 item</span>
+
+                        <h2>
+                            Keranjang
+                        </h2>
+
+                        <span id="cartCount">
+                            0 item
+                        </span>
+
                     </div>
 
-                    <button class="clear-cart-btn" onclick="clearCart()">
+
+                    <button
+                        class="clear-cart-btn"
+                        onclick="clearCart()"
+                    >
                         Kosongkan
                     </button>
+
                 </div>
 
-                <div class="cart-list" id="cartList">
+
+
+                <!-- CART LIST -->
+
+                <div
+                    class="cart-list"
+                    id="cartList"
+                >
 
                     <div class="empty-cart">
-                        <div class="empty-icon">🛒</div>
-                        <h3>Keranjang masih kosong</h3>
-                        <p>Pilih produk di sebelah kiri untuk memulai transaksi.</p>
+
+                        <div class="empty-icon">
+                            🛒
+                        </div>
+
+                        <h3>
+                            Keranjang masih kosong
+                        </h3>
+
+                        <p>
+                            Pilih produk di sebelah kiri untuk memulai transaksi.
+                        </p>
+
                     </div>
 
                 </div>
 
+
+
                 <!-- CUSTOMER -->
+
                 <div class="customer-box">
 
                     <label for="customerName">
+
                         Pelanggan
-                        <span>Opsional</span>
+
+                        <span>
+                            Opsional
+                        </span>
+
                     </label>
+
 
                     <input
                         type="text"
@@ -229,13 +519,23 @@
 
                 </div>
 
+
+
                 <!-- DISCOUNT -->
+
                 <div class="discount-box">
 
-                    <label for="discountInput">Diskon</label>
+                    <label for="discountInput">
+                        Diskon
+                    </label>
+
 
                     <div class="money-input">
-                        <span>Rp</span>
+
+                        <span>
+                            Rp
+                        </span>
+
                         <input
                             type="number"
                             id="discountInput"
@@ -243,83 +543,163 @@
                             value="0"
                             placeholder="0"
                         >
+
                     </div>
 
                 </div>
 
-                <!-- TOTAL -->
+
+
+                <!-- SUMMARY -->
+
                 <div class="summary">
 
                     <div class="summary-row">
-                        <span>Subtotal</span>
-                        <strong id="subtotalText">Rp 0</strong>
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <strong id="subtotalText">
+                            Rp 0
+                        </strong>
+
                     </div>
 
+
                     <div class="summary-row">
-                        <span>Diskon</span>
-                        <strong class="discount-text" id="discountText">- Rp 0</strong>
+
+                        <span>
+                            Diskon
+                        </span>
+
+                        <strong
+                            class="discount-text"
+                            id="discountText"
+                        >
+                            - Rp 0
+                        </strong>
+
                     </div>
+
 
                     <div class="summary-divider"></div>
 
+
                     <div class="summary-total">
-                        <span>Total</span>
-                        <strong id="totalText">Rp 0</strong>
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="totalText">
+                            Rp 0
+                        </strong>
+
                     </div>
 
                 </div>
 
+
+
                 <!-- PAYMENT -->
+
                 <div class="payment-box">
 
-                    <label>Metode Pembayaran</label>
+                    <label>
+                        Metode Pembayaran
+                    </label>
+
 
                     <div class="payment-methods">
+
 
                         <button
                             class="payment-btn active"
                             data-method="CASH"
                             onclick="selectPaymentMethod('CASH')"
                         >
-                            <span>💵</span>
-                            <strong>Cash</strong>
+
+                            <span>
+                                💵
+                            </span>
+
+                            <strong>
+                                Cash
+                            </strong>
+
                         </button>
+
 
                         <button
                             class="payment-btn"
                             data-method="QRIS"
                             onclick="selectPaymentMethod('QRIS')"
                         >
-                            <span>▣</span>
-                            <strong>QRIS</strong>
+
+                            <span>
+                                ▣
+                            </span>
+
+                            <strong>
+                                QRIS
+                            </strong>
+
                         </button>
+
 
                         <button
                             class="payment-btn"
                             data-method="TRANSFER"
                             onclick="selectPaymentMethod('TRANSFER')"
                         >
-                            <span>🏦</span>
-                            <strong>Transfer</strong>
+
+                            <span>
+                                🏦
+                            </span>
+
+                            <strong>
+                                Transfer
+                            </strong>
+
                         </button>
+
 
                         <button
                             class="payment-btn"
                             data-method="BANK"
                             onclick="selectPaymentMethod('BANK')"
                         >
-                            <span>💳</span>
-                            <strong>Bank</strong>
+
+                            <span>
+                                💳
+                            </span>
+
+                            <strong>
+                                Bank
+                            </strong>
+
                         </button>
 
                     </div>
 
+
+
+                    <!-- PAID -->
+
                     <div class="paid-box">
 
-                        <label for="paidAmount">Uang Dibayar</label>
+                        <label for="paidAmount">
+                            Uang Dibayar
+                        </label>
+
 
                         <div class="money-input large">
-                            <span>Rp</span>
+
+                            <span>
+                                Rp
+                            </span>
+
                             <input
                                 type="number"
                                 id="paidAmount"
@@ -327,41 +707,71 @@
                                 value="0"
                                 placeholder="0"
                             >
+
                         </div>
 
                     </div>
 
+
+
+                    <!-- QUICK MONEY -->
+
                     <div class="quick-money">
 
-                        <button onclick="addPaymentAmount(10000)">
+                        <button
+                            onclick="addPaymentAmount(10000)"
+                        >
                             +10K
                         </button>
 
-                        <button onclick="addPaymentAmount(20000)">
+                        <button
+                            onclick="addPaymentAmount(20000)"
+                        >
                             +20K
                         </button>
 
-                        <button onclick="addPaymentAmount(50000)">
+                        <button
+                            onclick="addPaymentAmount(50000)"
+                        >
                             +50K
                         </button>
 
-                        <button onclick="setExactPayment()">
+                        <button
+                            onclick="setExactPayment()"
+                        >
                             Uang Pas
                         </button>
 
                     </div>
 
+
+
+                    <!-- CHANGE -->
+
                     <div class="change-row">
-                        <span>Kembalian</span>
-                        <strong id="changeText">Rp 0</strong>
+
+                        <span>
+                            Kembalian
+                        </span>
+
+                        <strong id="changeText">
+                            Rp 0
+                        </strong>
+
                     </div>
 
                 </div>
 
+
+
                 <!-- NOTES -->
+
                 <div class="notes-box">
 
-                    <label for="saleNotes">Catatan</label>
+                    <label for="saleNotes">
+                        Catatan
+                    </label>
+
 
                     <textarea
                         id="saleNotes"
@@ -371,14 +781,22 @@
 
                 </div>
 
-                <!-- BUTTON -->
+
+
+                <!-- PAY -->
+
                 <button
                     class="pay-btn"
                     id="payBtn"
                     onclick="processSale()"
                 >
-                    <span>✓</span>
+
+                    <span>
+                        ✓
+                    </span>
+
                     Bayar & Simpan
+
                 </button>
 
             </div>
@@ -389,42 +807,96 @@
 
 </div>
 
-<!-- TOAST -->
-<div class="toast" id="toast">
-    <span id="toastIcon">✓</span>
-    <span id="toastMessage">Berhasil</span>
+
+
+<!-- =====================================================
+     TOAST
+====================================================== -->
+
+<div
+    class="toast"
+    id="toast"
+>
+
+    <span id="toastIcon">
+        ✓
+    </span>
+
+    <span id="toastMessage">
+        Berhasil
+    </span>
+
 </div>
 
-<!-- SUCCESS MODAL -->
-<div class="modal-overlay" id="successModal">
+
+
+<!-- =====================================================
+     SUCCESS MODAL
+====================================================== -->
+
+<div
+    class="modal-overlay"
+    id="successModal"
+>
 
     <div class="success-modal">
 
-        <div class="success-icon">✓</div>
 
-        <h2>Transaksi Berhasil!</h2>
+        <div class="success-icon">
+            ✓
+        </div>
 
-        <p>Penjualan berhasil disimpan.</p>
+
+        <h2>
+            Transaksi Berhasil!
+        </h2>
+
+
+        <p>
+            Penjualan berhasil disimpan.
+        </p>
+
 
         <div class="invoice-box">
 
-            <span>Nomor Invoice</span>
-            <strong id="successInvoice">-</strong>
+            <span>
+                Nomor Invoice
+            </span>
+
+            <strong id="successInvoice">
+                -
+            </strong>
 
         </div>
+
 
         <div class="success-total">
-            <span>Total</span>
-            <strong id="successTotal">Rp 0</strong>
+
+            <span>
+                Total
+            </span>
+
+            <strong id="successTotal">
+                Rp 0
+            </strong>
+
         </div>
+
 
         <div class="success-actions">
 
-            <button class="secondary-btn" onclick="closeSuccessModal()">
+            <button
+                class="secondary-btn"
+                onclick="closeSuccessModal()"
+            >
                 Transaksi Baru
             </button>
 
-            <button class="primary-btn" onclick="printLastInvoice()">
+
+            <button
+                class="primary-btn"
+                onclick="printLastInvoice()"
+            >
                 🖨 Cetak
             </button>
 
@@ -433,6 +905,8 @@
     </div>
 
 </div>
+
+
 
 <script src="kasir.js"></script>
 
